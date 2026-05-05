@@ -34,7 +34,7 @@ class VendorController extends Controller
             ...$request->validated(),
         ]);
 
-        return redirect()->route('vendors.index')
+        return redirect()->route('app.vendors.index')
             ->with('success', 'Vendor created successfully');
     }
 
@@ -59,7 +59,7 @@ class VendorController extends Controller
 
         $vendor->update($request->validated());
 
-        return redirect()->route('vendors.show', $vendor)
+        return redirect()->route('app.vendors.show', $vendor)
             ->with('success', 'Vendor updated successfully');
     }
 

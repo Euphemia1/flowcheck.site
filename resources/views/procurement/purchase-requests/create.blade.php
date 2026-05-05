@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <form method="POST" action="{{ route('purchase-requests.store') }}" class="max-w-4xl">
+    <form method="POST" action="{{ route('app.purchase-requests.store') }}" class="max-w-4xl">
         @csrf
 
         <div class="bg-white rounded-lg shadow p-6 mb-6">
@@ -76,7 +76,7 @@
             <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
                 Create PR
             </button>
-            <a href="{{ route('purchase-requests.index') }}" class="bg-gray-300 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-400">
+            <a href="{{ route('app.purchase-requests.index') }}" class="bg-gray-300 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-400">
                 Cancel
             </a>
         </div>

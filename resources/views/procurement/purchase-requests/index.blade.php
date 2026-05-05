@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Purchase Requests
             </h2>
-            <a href="{{ route('purchase-requests.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+            <a href="{{ route('app.purchase-requests.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
                 New Purchase Request
             </a>
         </div>
@@ -60,7 +60,7 @@
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm">
-                            <a href="{{ route('purchase-requests.show', $pr) }}" class="text-blue-600 hover:text-blue-900">
+                            <a href="{{ route('app.purchase-requests.show', $pr) }}" class="text-blue-600 hover:text-blue-900">
                                 View
                             </a>
                         </td>

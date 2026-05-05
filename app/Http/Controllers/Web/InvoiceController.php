@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Models\Invoice;
 use App\Models\PurchaseOrder;
+use App\Models\Vendor;
 use App\Services\DocumentNumberGeneratorService;
 use App\Services\ThreeWayMatchingService;
 use Illuminate\Contracts\View\View;
@@ -36,8 +37,11 @@ class InvoiceController extends Controller
         $purchaseOrders = PurchaseOrder::where('organisation_id', $org->id)
             ->where('status', '!=', 'cancelled')
             ->get(['id', 'po_number']);
+        $vendors = Vendor::where('organisation_id', $org->id)
+            ->where('is_approved', true)
+            ->get(['id', 'name']);
 
-        return view('finance.invoices.create', compact('purchaseOrders'));
+        return view('finance.invoices.create', compact('purchaseOrders', 'vendors'));
     }
 
     public function store(StoreInvoiceRequest $request): RedirectResponse
@@ -46,7 +50,7 @@ class InvoiceController extends Controller
 
         $filePath = null;
         if ($request->hasFile('file')) {
-            $filePath = $request->file('file')->store("invoices/{$org->id}", 's3');
+            $filePath = $request->file('file')->store("invoices/{$org->id}");
         }
 
         $invoice = Invoice::create([
@@ -67,7 +71,7 @@ class InvoiceController extends Controller
             $this->matchingService->matchInvoice($invoice);
         }
 
-        return redirect()->route('invoices.show', $invoice)
+        return redirect()->route('app.invoices.show', $invoice)
             ->with('success', 'Invoice uploaded successfully');
     }
 

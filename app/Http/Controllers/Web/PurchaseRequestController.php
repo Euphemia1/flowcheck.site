@@ -79,7 +79,7 @@ class PurchaseRequestController extends Controller
             return $pr;
         });
 
-        return redirect()->route('purchase-requests.show', $pr)
+        return redirect()->route('app.purchase-requests.show', $pr)
             ->with('success', 'Purchase Request created successfully');
     }
 

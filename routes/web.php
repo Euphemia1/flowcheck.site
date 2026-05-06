@@ -1,12 +1,25 @@
 <?php
 
 use App\Http\Controllers\Web\DashboardController;
+use App\Http\Controllers\Web\LoginController;
 use App\Http\Controllers\Web\PurchaseRequestController;
 use App\Http\Controllers\Web\VendorController;
 use App\Http\Controllers\Web\InvoiceController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth:sanctum', 'verified', 'org.scoped'])->prefix('app')->name('app.')->group(function () {
+// Root redirect
+Route::get('/', fn () => redirect()->route('login'));
+
+// Auth routes (guest only)
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [LoginController::class, 'show'])->name('login');
+    Route::post('/login', [LoginController::class, 'store']);
+});
+
+Route::post('/logout', [LoginController::class, 'destroy'])->name('logout')->middleware('auth');
+
+// Protected app routes
+Route::middleware(['auth', 'org.scoped'])->prefix('app')->name('app.')->group(function () {
     // Dashboard
     Route::get('/dashboard', DashboardController::class . '@index')->name('dashboard');
 

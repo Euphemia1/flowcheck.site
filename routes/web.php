@@ -22,7 +22,7 @@ use App\Http\Controllers\Web\Settings\WorkflowController;
 use App\Http\Controllers\Web\Settings\IntegrationController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => redirect()->route('login'));
+Route::get('/', fn () => view('landing'))->name('landing');
 
 // Auth routes (guest only)
 Route::middleware('guest')->group(function () {

@@ -14,6 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'org.scoped' => \App\Http\Middleware\OrganisationScoped::class,
+            'mfa.check'  => \App\Http\Middleware\CheckMfa::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

@@ -3,7 +3,9 @@
     "allow": [
       "Read(//c//**)",
       "Bash(npm --version)",
-      "Bash(grep -E \"\\\\.\\(php\\)$\")"
+      "Bash(grep -E \"\\\\.\\(php\\)$\")",
+      "Bash(grep -E \"\\\\.php$\")",
+      "Bash(find \"C:\\\\Users\\\\XPS\\\\Desktop\\\\flowcheck.ai\\\\.claude\\\\worktrees\\\\goofy-rhodes-0010c3\\\\app\\\\Models\" -type f -name \"*.php\" -exec grep -l \"RfqItem\" {} \\\\;)"
     ]
   }
 }

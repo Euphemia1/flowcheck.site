@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Requests\StorePurchaseRequestRequest;
+use App\Models\Budget;
 use App\Models\Department;
 use App\Models\PurchaseRequest;
 use App\Models\PurchaseRequestItem;
 use App\Services\DocumentNumberGeneratorService;
 use App\Services\ApprovalWorkflowService;
+use App\Traits\LogsToAudit;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +17,7 @@ use Illuminate\Support\Facades\DB;
 
 class PurchaseRequestController extends Controller
 {
+    use LogsToAudit;
     public function __construct(
         protected DocumentNumberGeneratorService $docService,
         protected ApprovalWorkflowService $approvalService
@@ -49,7 +52,27 @@ class PurchaseRequestController extends Controller
             $item['quantity_requested'] * $item['unit_price_estimated']
         );
 
-        $pr = DB::transaction(function () use ($request, $user, $org, $totalAmount) {
+        // Budget enforcement: warn if PR would exceed department budget
+        $budgetWarning = null;
+        if ($request->department_id) {
+            $budget = Budget::where('organisation_id', $org->id)
+                ->where('department_id', $request->department_id)
+                ->where('fiscal_year', now()->year)
+                ->first();
+
+            if ($budget) {
+                $remaining = $budget->total_amount - $budget->spent_amount;
+                if ($totalAmount > $remaining) {
+                    $budgetWarning = sprintf(
+                        'Warning: This request (ZMW %s) exceeds remaining budget of ZMW %s for this department.',
+                        number_format($totalAmount, 2),
+                        number_format($remaining, 2)
+                    );
+                }
+            }
+        }
+
+        $pr = DB::transaction(function () use ($request, $user, $org, $totalAmount, $budgetWarning) {
             $pr = PurchaseRequest::create([
                 'organisation_id' => $org->id,
                 'department_id' => $request->department_id,
@@ -76,11 +99,26 @@ class PurchaseRequestController extends Controller
                 ]);
             }
 
+            if ($budgetWarning) {
+                $this->logAudit('budget_exceeded_warning', $pr, [
+                    'total_amount' => $totalAmount,
+                    'department_id' => $request->department_id,
+                ]);
+            }
+
+            $this->logAudit('created', $pr);
+
             return $pr;
         });
 
-        return redirect()->route('app.purchase-requests.show', $pr)
+        $redirect = redirect()->route('app.purchase-requests.show', $pr)
             ->with('success', 'Purchase Request created successfully');
+
+        if ($budgetWarning) {
+            $redirect = $redirect->with('warning', $budgetWarning);
+        }
+
+        return $redirect;
     }
 
     public function show(PurchaseRequest $purchaseRequest): View

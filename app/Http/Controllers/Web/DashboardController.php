@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Models\Organisation;
-use App\Models\PurchaseRequest;
-use App\Models\Invoice;
-use App\Models\Vendor;
+use App\Models\AuditLog;
+use App\Models\Contract;
 use App\Models\Department;
+use App\Models\Invoice;
+use App\Models\PurchaseOrder;
+use App\Models\PurchaseRequest;
+use App\Models\Vendor;
+use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,23 +18,24 @@ class DashboardController extends Controller
     public function index(): View
     {
         $user = Auth::user();
-        $org = $user->organisation;
+        $org  = $user->organisation;
+        $ytd  = now()->startOfYear()->toDateString();
 
-        // Get stats for dashboard
         $pendingPrs = PurchaseRequest::where('organisation_id', $org->id)
-            ->where('status', 'under_review')
+            ->whereIn('status', ['submitted', 'under_review'])
             ->count();
 
-        $totalSpend = PurchaseRequest::where('organisation_id', $org->id)
-            ->where('status', 'approved')
-            ->sum('total_estimated_amount');
+        $totalSpend = PurchaseOrder::where('organisation_id', $org->id)
+            ->whereIn('status', ['approved', 'partially_received', 'received', 'closed'])
+            ->where('created_at', '>=', $ytd)
+            ->sum('total_amount');
+
+        $openPos = PurchaseOrder::where('organisation_id', $org->id)
+            ->whereIn('status', ['approved', 'partially_received'])
+            ->count();
 
         $pendingInvoices = Invoice::where('organisation_id', $org->id)
-            ->where('status', 'pending_matching')
-            ->count();
-
-        $vendors = Vendor::where('organisation_id', $org->id)
-            ->where('is_approved', true)
+            ->whereIn('status', ['pending', 'pending_matching', 'under_review'])
             ->count();
 
         $prsByStatus = PurchaseRequest::where('organisation_id', $org->id)
@@ -40,21 +44,45 @@ class DashboardController extends Controller
             ->get();
 
         $spendByDepartment = Department::where('organisation_id', $org->id)
-            ->with('purchaseRequests')
             ->get()
-            ->map(fn($dept) => [
-                'name' => $dept->name,
-                'spend' => $dept->purchaseRequests->sum('total_estimated_amount'),
-            ]);
+            ->map(function ($dept) use ($org, $ytd) {
+                $spend = PurchaseOrder::where('organisation_id', $org->id)
+                    ->whereIn('status', ['approved', 'partially_received', 'received', 'closed'])
+                    ->where('created_at', '>=', $ytd)
+                    ->whereHas('purchaseRequest', fn($q) => $q->where('department_id', $dept->id))
+                    ->sum('total_amount');
+                return ['name' => $dept->name, 'spend' => $spend];
+            })
+            ->filter(fn($d) => $d['spend'] > 0)
+            ->sortByDesc('spend')
+            ->take(6)
+            ->values();
+
+        $expiringContracts = Contract::where('organisation_id', $org->id)
+            ->whereIn('status', ['active', 'draft'])
+            ->whereNotNull('end_date')
+            ->where('end_date', '<=', now()->addDays(60))
+            ->where('end_date', '>=', now())
+            ->with('vendor')
+            ->orderBy('end_date')
+            ->take(5)
+            ->get();
+
+        $recentActivity = AuditLog::where('organisation_id', $org->id)
+            ->with('user')
+            ->latest()
+            ->take(8)
+            ->get();
 
         return view('analytics.dashboard', compact(
             'pendingPrs',
             'totalSpend',
+            'openPos',
             'pendingInvoices',
-            'vendors',
             'prsByStatus',
             'spendByDepartment',
-            'org'
+            'expiringContracts',
+            'recentActivity',
         ));
     }
 }

@@ -8,6 +8,7 @@ use App\Models\PurchaseOrder;
 use App\Models\Vendor;
 use App\Services\DocumentNumberGeneratorService;
 use App\Services\ThreeWayMatchingService;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -91,5 +92,16 @@ class InvoiceController extends Controller
 
         return redirect()->back()
             ->with('success', 'Invoice approved for payment');
+    }
+
+    public function pdf(Invoice $invoice)
+    {
+        $this->authorize('view', $invoice);
+        $invoice->load('vendor', 'purchaseOrder');
+        $org = Auth::user()->organisation;
+
+        $pdf = Pdf::loadView('pdf.invoice', compact('invoice', 'org'))->setPaper('a4');
+
+        return $pdf->download($invoice->internal_invoice_number . '.pdf');
     }
 }

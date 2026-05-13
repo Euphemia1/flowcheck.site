@@ -21,6 +21,8 @@ return new class extends Migration
             $table->json('bank_details')->nullable();
             $table->boolean('is_approved')->default(false);
             $table->decimal('performance_score', 5, 2)->default(0);
+            $table->string('zppa_reg_number')->nullable();
+            $table->string('zppa_reg_class')->nullable();
             $table->timestamps();
             
             $table->foreign('organisation_id')->references('id')->on('organisations')->cascadeOnDelete();

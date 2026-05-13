@@ -30,7 +30,7 @@ class OrganisationSeeder extends Seeder
             'name'     => 'Zambia Procurement Solutions',
             'slug'     => 'zambia-procurement-solutions',
             'plan_id'  => $starter->id,
-            'industry' => 'consulting',
+            'industry' => 'other',
             'country'  => 'ZM',
             'currency' => 'ZMW',
             'settings' => ['mfa_enforcement' => false, 'si68_compliance' => false, 'fiscal_year_start' => 1],

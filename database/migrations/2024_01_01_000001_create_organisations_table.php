@@ -16,7 +16,8 @@ return new class extends Migration
             $table->enum('industry', ['mining', 'construction', 'manufacturing', 'other'])->default('other');
             $table->string('country', 2)->default('ZM');
             $table->string('currency', 3)->default('ZMW');
-            $table->json('settings')->nullable(); // thresholds, approval rules, MFA enforcement
+            $table->json('settings')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

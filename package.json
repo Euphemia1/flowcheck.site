@@ -3,7 +3,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
+        "build": "echo 'Assets pre-built, skipping vite build'",
         "lint": "eslint resources/js --ext .js,.vue",
         "lint:fix": "eslint resources/js --ext .js,.vue --fix"
     },

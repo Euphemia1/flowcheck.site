@@ -1,0 +1,4 @@
+language: php
+php_version: "8.2"
+build:
+  commands: []

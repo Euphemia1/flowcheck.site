@@ -32,7 +32,6 @@
                 <a href="#features" class="text-sm text-gray-400 hover:text-white transition">Features</a>
                 <a href="#how-it-works" class="text-sm text-gray-400 hover:text-white transition">How It Works</a>
                 <a href="#impact" class="text-sm text-gray-400 hover:text-white transition">Impact</a>
-                <a href="#pricing" class="text-sm text-gray-400 hover:text-white transition">Pricing</a>
                 <a href="#" class="text-sm text-gray-400 hover:text-white transition">About Us</a>
             </div>
             <div class="flex items-center gap-4">
@@ -333,66 +332,6 @@
                 <p class="text-xs text-gray-400 leading-relaxed">{{ $desc }}</p>
             </div>
             @endforeach
-        </div>
-    </div>
-</section>
-
-{{-- ── Pricing ── --}}
-<section id="pricing" class="py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <span class="text-xs font-semibold text-blue-400 uppercase tracking-widest mb-4 block">Pricing</span>
-            <h2 class="text-4xl font-black text-white mb-4">Simple, Scalable Pricing</h2>
-            <p class="text-gray-400">Choose the plan that fits your team. Upgrade anytime.</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-6 items-start">
-            {{-- Starter --}}
-            <div class="border border-white/10 rounded-2xl p-8 bg-gray-900/40">
-                <h3 class="text-xl font-bold text-white mb-1">Starter</h3>
-                <p class="text-sm text-gray-400 mb-8">For small teams getting organised.</p>
-                <ul class="space-y-3 mb-10">
-                    @foreach(['Up to 5 users','Purchase requests','Basic approval workflows','Vendor records','Email notifications','Audit history'] as $feat)
-                    <li class="flex items-center gap-2 text-sm text-gray-300">
-                        <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                        {{ $feat }}
-                    </li>
-                    @endforeach
-                </ul>
-                <a href="{{ route('login') }}" class="block w-full py-3 border border-white/10 text-white font-semibold rounded-xl text-center hover:bg-white/5 transition text-sm">Start Free Trial</a>
-            </div>
-
-            {{-- Growth (Most Popular) --}}
-            <div class="border-2 border-blue-500 rounded-2xl p-8 relative bg-gray-900 shadow-2xl shadow-blue-600/10">
-                <div class="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span class="px-4 py-1.5 bg-blue-600 text-white text-xs font-semibold rounded-full whitespace-nowrap">Most Popular</span>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-1">Growth</h3>
-                <p class="text-sm text-blue-400 font-semibold mb-8">Everything in Starter, plus:</p>
-                <ul class="space-y-3 mb-10">
-                    @foreach(['Unlimited users & workflows','Budget tracking & controls','Invoice & 3-way matching','RFQ & vendor comparisons','Advanced analytics & reports','Priority support','Custom approval chains','Contract management'] as $feat)
-                    <li class="flex items-center gap-2 text-sm text-gray-300">
-                        <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                        {{ $feat }}
-                    </li>
-                    @endforeach
-                </ul>
-                <a href="{{ route('login') }}" class="block w-full py-3 bg-blue-600 text-white font-semibold rounded-xl text-center hover:bg-blue-500 transition text-sm">Start Free Trial</a>
-            </div>
-
-            {{-- Enterprise --}}
-            <div class="border border-white/10 rounded-2xl p-8 bg-gray-900/40">
-                <h3 class="text-xl font-bold text-white mb-1">Enterprise</h3>
-                <p class="text-sm text-blue-400 font-semibold mb-8">Everything in Growth, plus:</p>
-                <ul class="space-y-3 mb-10">
-                    @foreach(['SSO & advanced permissions','ERP integrations','Multi-entity & multi-currency','Dedicated onboarding','SLA support','API access','Custom compliance workflows','Grant & donor reporting'] as $feat)
-                    <li class="flex items-center gap-2 text-sm text-gray-300">
-                        <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                        {{ $feat }}
-                    </li>
-                    @endforeach
-                </ul>
-                <a href="#" class="block w-full py-3 border border-white/10 text-white font-semibold rounded-xl text-center hover:bg-white/5 transition text-sm">Contact Sales</a>
-            </div>
         </div>
     </div>
 </section>

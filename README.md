@@ -47,13 +47,6 @@ FlowCheck is a multi-tenant,procurement management platform built  It's designed
 - ✅ Invoice controller with matching logic
 - ⏳ Invoice views & matching UI needed
 
-8. BOQ & Tender Management
-- ✅ Models & migrations ready
-- ⏳ Controller & views needed
-
- 9. Contract Management
-- ✅ Models & migrations ready
-- ⏳ Controller & views needed
 
 
 

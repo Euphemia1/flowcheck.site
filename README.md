@@ -16,48 +16,48 @@ This is a **complete scaffolded Laravel 11 project** with:
 - ✅ Role-based permissions (Spatie)
 - ✅ Sample seeders with demo data
 
-### 1. **Authentication & Onboarding**
+ 1. **Authentication & Onboarding**
 - ✅ Models & migrations ready
 - ⏳ Blade views need completion
 - Includes: Email verification, password reset, MFA (TOTP)
 
-### 2. **User & Role Management**
+ 2. **User & Role Management**
 - ✅ Roles defined (9 roles with Spatie)
 - ✅ Permissions seeded
 - ⏳ User management UI needed
 
-### 3. **Purchase Request (PR) Workflow**
+ 3. **Purchase Request (PR) Workflow**
 - ✅ Controller & form requests created
 - ✅ Service for approval workflow logic
 - ✅ Index and create views
 - ⏳ Edit, show, approval UI views needed
 
-### 4. **RFQ Management**
+ 4. **RFQ Management**
 - ✅ Models & database ready
 - ⏳ Controller & views needed
 
-### 5. **Purchase Order (PO)**
+ 5. **Purchase Order (PO)**
 - ✅ Models & database ready
 - ⏳ PDF generation (DomPDF) integration needed
 
-### 6. **Goods Receipt Note (GRN)**
+ 6. **Goods Receipt Note (GRN)**
 - ✅ Models & database ready
 - ⏳ Mobile-friendly views needed
 
-### 7. **Invoice Management & 3-Way Matching**
+7. **Invoice Management & 3-Way Matching**
 - ✅ ThreeWayMatchingService implemented
 - ✅ Invoice controller with matching logic
 - ⏳ Invoice views & matching UI needed
 
-### 8. **BOQ & Tender Management**
+8. **BOQ & Tender Management**
 - ✅ Models & migrations ready
 - ⏳ Controller & views needed
 
-### 9. **Contract Management**
+ 9. **Contract Management**
 - ✅ Models & migrations ready
 - ⏳ Controller & views needed
 
-### 10. **Spend Analytics Dashboard**
+ 10. **Spend Analytics Dashboard**
 - ✅ Dashboard controller with stats
 - ✅ Initial dashboard view with Chart.js
 - ⏳ More advanced analytics & charts needed

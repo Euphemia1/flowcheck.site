@@ -17,22 +17,6 @@ This is a **complete scaffolded Laravel 11 project** with:
 - ✅ Sample seeders with demo data
 
 
-├── database/
-│   ├── migrations/          # 25+ migrations for all tables
-│   └── seeders/             # Demo data seeders
-├── resources/
-│   ├── views/
-│   │   ├── layouts/         # App layout & navigation
-│   │   ├── procurement/     # PR, RFQ, PO views
-│   │   ├── finance/         # Invoice, payment views
-│   │   ├── vendors/         # Vendor management
-│   │   ├── analytics/       # Dashboard & charts
-│   │   └── settings/        # Configuration views
-│   ├── css/                 # Tailwind CSS
-│   └── js/                  # Alpine.js + frontend logic
-├── routes/
-│   ├── web.php              # Web routes (app dashboard)
-│   └── api.php              # API routes (Sanctum)
 ├── config/                  # Configuration files
 ├── storage/                 # File uploads, logs
 ├── tests/                   # Feature & unit tests

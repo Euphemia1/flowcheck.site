@@ -17,18 +17,6 @@ This is a **complete scaffolded Laravel 11 project** with:
 - ✅ Sample seeders with demo data
 
 
-### Installation Steps
-
-1. **Clone/Download the project**
-   ```bash
-   cd flowcheck.ai
-   ```
-
-2. **Install PHP dependencies**
-   ```bash
-   composer install
-   ```
-
 3. **Install Node dependencies**
    ```bash
    npm install

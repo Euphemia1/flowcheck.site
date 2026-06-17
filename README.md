@@ -96,25 +96,6 @@ SI68_COMPLIANCE_MODE=true
 CURRENCY_DEFAULT=ZMW
 ```
 
-## Database Schema Highlights
-
-**25 database tables** covering:
-- Organisations (multi-tenancy)
-- Users & Roles (Spatie)
-- Departments & Budget Lines
-- Vendors & Performance Scores
-- Purchase Requests & Items
-- Approval Workflows & Logs
-- RFQs & Vendor Quotes
-- Purchase Orders & Items
-- Goods Receipt Notes & Items
-- Invoices & 3-Way Matching Results
-- Contracts & BOQs/Tenders
-- Audit Logs (append-only)
-- Document Sequences (auto-numbering)
-
-## Next Steps for Development
-
 ### Immediate Priorities (MVP Phase 1)
 1. ✅ Create Purchase Request flow (create/submit/approve/reject)
 2. Create Purchase Request views (show, edit, approval dashboard)

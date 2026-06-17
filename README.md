@@ -16,28 +16,6 @@ This is a **complete scaffolded Laravel 11 project** with:
 - ✅ Role-based permissions (Spatie)
 - ✅ Sample seeders with demo data
 
-
-8. **Seed demo data** (optional)
-   ```bash
-   php artisan db:seed
-   ```
-
-9. **Build frontend assets**
-   ```bash
-   npm run build
-   # or for development with watch:
-   npm run dev
-   ```
-
-10. **Start the development server**
-    ```bash
-    php artisan serve
-    ```
-
-11. **Access the application**
-    - URL: `http://localhost:8000`
-    - Demo login: `admin@copperbelt.test` / `password`
-
 ## Project Structure
 
 ```

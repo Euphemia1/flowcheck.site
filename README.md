@@ -1,6 +1,6 @@
 # FlowCheck MVP - Procurement Management Platform
 
-**FlowCheck** is a multi-tenant, mobile-responsive SaaS procurement management platform built with Laravel 11, MySQL, and Tailwind CSS. It's designed for SMEs, construction companies, and industrial organisations in Zambia to digitise their procurement lifecycle end-to-end.
+**FlowCheck** is a multi-tenant,procurement management platform built with Laravel 11, MySQL, and Tailwind CSS. It's designed for SMEs, construction companies, and industrial organisations in Zambia to digitise their procurement lifecycle end-to-end.
 
 ## Project Status
 

@@ -55,25 +55,7 @@ FlowCheck is a multi-tenant,procurement management platform built  It's designed
 - ✅ Models & migrations ready
 - ⏳ Controller & views needed
 
- 10. Spend Analytics Dashboard
-- ✅ Dashboard controller with stats
-- ✅ Initial dashboard view with Chart.js
-- ⏳ More advanced analytics & charts needed
 
- 11. Vendor Portal
-- ⏳ Separate authentication guard needed
-- ⏳ Portal views for vendors
-
- 12. Compliance & Audit
-- ✅ AuditLog model & migrations
-- ⏳ Audit log viewer UI needed
-
- 13. Notifications
-- ✅ Database notification migrations ready
-- ⏳ Email templates needed
-
- 14. Settings
-- ⏳ Organisation settings controller & views needed
 
 MVP Phase 1
 1. ✅ Create Purchase Request flow (create/submit/approve/reject)

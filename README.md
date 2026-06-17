@@ -16,13 +16,6 @@ This is a **complete scaffolded Laravel 11 project** with:
 - ✅ Role-based permissions (Spatie)
 - ✅ Sample seeders with demo data
 
-## Quick Setup Instructions
-
-### Prerequisites
-- PHP 8.2+
-- Composer
-- MySQL 8+
-- Node.js 18+ (for Tailwind/Vite)
 
 ### Installation Steps
 

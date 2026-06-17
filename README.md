@@ -14,18 +14,7 @@ FlowCheck is a multi-tenant,procurement management platform built  It's designed
 - ✅ Role-based permissions (Spatie)
 - ✅ Sample seeders with demo data
 
- 1. Authentication & Onboarding
-- ✅ Models & migrations ready
-- ⏳ Blade views need completion
-- Includes: Email verification, password reset, MFA (TOTP)
-
- 2. User & Role Management
-- ✅ Roles defined (9 roles with Spatie)
-- ✅ Permissions seeded
-- ⏳ User management UI needed
-
-
-
+ 
 MVP Phase 1
 1. ✅ Create Purchase Request flow (create/submit/approve/reject)
 2. Create Purchase Request views (show, edit, approval dashboard)

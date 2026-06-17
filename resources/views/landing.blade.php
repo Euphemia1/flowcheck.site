@@ -256,19 +256,19 @@
         /* ── Footer ── */
         .footer-section { background:#0c1a33; padding:56px 0 32px; }
         .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr; gap:40px; margin-bottom:48px; }
-        .footer-brand-desc { font-size:13.5px; color:#94a3b8; line-height:1.7; margin:12px 0 20px; }
+        .footer-brand-desc { font-size:13.5px; color:#cbd5e1; line-height:1.7; margin:12px 0 20px; }
         .footer-socials { display:flex; gap:8px; }
-        .footer-social { width:32px; height:32px; background:#1e3a5f; border-radius:8px; display:flex; align-items:center; justify-content:center; text-decoration:none; color:#94a3b8; font-size:11px; font-weight:700; transition:all .15s; }
+        .footer-social { width:32px; height:32px; background:#1e3a5f; border-radius:8px; display:flex; align-items:center; justify-content:center; text-decoration:none; color:#cbd5e1; font-size:11px; font-weight:700; transition:all .15s; }
         .footer-social:hover { background:#2563eb; color:#fff; }
-        .footer-col-title { font-size:13px; font-weight:700; color:#e2e8f0; margin:0 0 16px; letter-spacing:.3px; }
+        .footer-col-title { font-size:13px; font-weight:700; color:#ffffff; margin:0 0 16px; letter-spacing:.3px; }
         .footer-col-links { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
-        .footer-col-links a { font-size:13px; color:#94a3b8; text-decoration:none; transition:color .15s; display:block; }
-        .footer-col-links a:hover { color:#e2e8f0; }
+        .footer-col-links a { font-size:13px; color:#cbd5e1; text-decoration:none; transition:color .15s; display:block; }
+        .footer-col-links a:hover { color:#ffffff; }
         .footer-bottom { border-top:1px solid #1e3a5f; padding-top:24px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
-        .footer-copy { font-size:13px; color:#64748b; }
+        .footer-copy { font-size:13px; color:#94a3b8; }
         .footer-legal { display:flex; gap:24px; }
-        .footer-legal a { font-size:13px; color:#64748b; text-decoration:none; transition:color .15s; }
-        .footer-legal a:hover { color:#94a3b8; }
+        .footer-legal a { font-size:13px; color:#94a3b8; text-decoration:none; transition:color .15s; }
+        .footer-legal a:hover { color:#cbd5e1; }
 
         /* Responsive */
         @media (max-width:1024px) {

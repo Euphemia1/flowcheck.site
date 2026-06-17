@@ -16,21 +16,7 @@ This is a **complete scaffolded Laravel 11 project** with:
 - ✅ Role-based permissions (Spatie)
 - ✅ Sample seeders with demo data
 
-## Project Structure
 
-```
-flowcheck.ai/
-├── app/
-│   ├── Models/              # Eloquent models for all entities
-│   ├── Http/
-│   │   ├── Controllers/Web/ # Web controllers
-│   │   ├── Controllers/Api/ # API controllers
-│   │   └── Requests/        # Form validation requests
-│   ├── Policies/            # Authorization policies
-│   ├── Services/            # Business logic (3-way matching, document numbering, etc.)
-│   ├── Livewire/            # Livewire components
-│   ├── Jobs/                # Queued jobs
-│   └── Notifications/       # Email/in-app notifications
 ├── database/
 │   ├── migrations/          # 25+ migrations for all tables
 │   └── seeders/             # Demo data seeders

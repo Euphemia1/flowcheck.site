@@ -96,7 +96,7 @@ SI68_COMPLIANCE_MODE=true
 CURRENCY_DEFAULT=ZMW
 ```
 
-### Immediate Priorities (MVP Phase 1)
+Immediate Priorities (MVP Phase 1)
 1. ✅ Create Purchase Request flow (create/submit/approve/reject)
 2. Create Purchase Request views (show, edit, approval dashboard)
 3. Implement GRN creation with photo uploads
@@ -104,65 +104,15 @@ CURRENCY_DEFAULT=ZMW
 5. Build vendor approval workflow
 6. Add contract expiry notifications
 
-### Phase 2
+Phase 2
 1. RFQ management complete (create, send to vendors, quote comparison)
 2. Purchase Order PDF generation
 3. Tender management (BOQ, scoring, award)
 4. Vendor portal (separate authentication)
 5. Advanced analytics (spend trends, vendor performance)
-
-### Phase 3
+ Phase 3
 1. Mobile app (React Native/Flutter consuming API)
 2. OCR for invoice parsing
 3. EDI/API integrations
 4. Blockchain audit trail (optional)
 5. Advanced reporting & BI
-
-## Testing
-
-Run feature tests:
-```bash
-php artisan test
-```
-
-## API Documentation
-
-API endpoints use Sanctum token auth. Key endpoints:
-
-```
-POST   /api/login                      # Get auth token
-GET    /api/purchase-requests          # List PRs
-POST   /api/purchase-requests          # Create PR
-GET    /api/purchase-requests/{id}     # Get PR details
-GET    /api/invoices                   # List invoices
-POST   /api/invoices                   # Upload invoice
-GET    /api/dashboard/stats            # Dashboard statistics
-```
-
-## SI 68 of 2025 Compliance
-
-The system enforces SI 68 (Zambian Statutory Instrument 68 of 2025) compliance for 3-way matching:
-- Invoices cannot move to `approved_for_payment` unless `matching_status = 'matched'`
-- Enforcement is configurable via `SI68_COMPLIANCE_MODE` in `.env`
-- All procurement actions are logged immutably in `audit_logs`
-
-## Currency & Localization
-
-- Default currency: ZMW (Zambian Kwacha)
-- Default country: ZM (Zambia)
-- All monetary values stored as `decimal(15,2)`
-- Multi-currency support planned for future
-
-## Support & Contributing
-
-For questions or contributions, contact the development team.
-
-## License
-
-MIT License - See LICENSE file for details.
-
----
-
-**Version:** 1.0.0 MVP  
-**Last Updated:** April 2026  
-**Maintainer:** FlowCheck Development Team

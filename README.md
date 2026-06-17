@@ -75,9 +75,7 @@ FlowCheck is a multi-tenant,procurement management platform built  It's designed
  14. Settings
 - ⏳ Organisation settings controller & views needed
 
-
-
-Immediate Priorities (MVP Phase 1)
+MVP Phase 1
 1. ✅ Create Purchase Request flow (create/submit/approve/reject)
 2. Create Purchase Request views (show, edit, approval dashboard)
 3. Implement GRN creation with photo uploads

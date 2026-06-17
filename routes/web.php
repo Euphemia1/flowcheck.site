@@ -24,11 +24,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => view('landing'))->name('landing');
 
-// Auth routes (guest only)
-Route::middleware('guest')->group(function () {
-    Route::get('/auth/login', [LoginController::class, 'show'])->name('login');
-    Route::post('/auth/login', [LoginController::class, 'store'])->middleware('throttle:10,1');
-});
+// Auth routes
+Route::get('/auth/login', [LoginController::class, 'show'])->name('login');
+Route::post('/auth/login', [LoginController::class, 'store'])->middleware('throttle:10,1');
 
 Route::post('/logout', [LoginController::class, 'destroy'])->name('logout')->middleware('auth');
 

@@ -16,16 +16,6 @@ This is a **complete scaffolded Laravel 11 project** with:
 - ✅ Role-based permissions (Spatie)
 - ✅ Sample seeders with demo data
 
-
-├── config/                  # Configuration files
-├── storage/                 # File uploads, logs
-├── tests/                   # Feature & unit tests
-├── composer.json            # PHP dependencies
-└── package.json             # Node dependencies
-```
-
-## Core Modules (Ready for Development)
-
 ### 1. **Authentication & Onboarding**
 - ✅ Models & migrations ready
 - ⏳ Blade views need completion

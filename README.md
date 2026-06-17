@@ -24,19 +24,6 @@ FlowCheck is a multi-tenant,procurement management platform built  It's designed
 - ✅ Permissions seeded
 - ⏳ User management UI needed
 
- 3. Purchase Request (PR) Workflow
-- ✅ Controller & form requests created
-- ✅ Service for approval workflow logic
-- ✅ Index and create views
-- ⏳ Edit, show, approval UI views needed
-
- 4. RFQ Management
-- ✅ Models & database ready
-- ⏳ Controller & views needed
-
- 5. Purchase Order (PO)
-- ✅ Models & database ready
-- ⏳ PDF generation (DomPDF) integration needed
 
 
 MVP Phase 1

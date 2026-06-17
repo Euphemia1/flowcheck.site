@@ -17,21 +17,6 @@ This is a **complete scaffolded Laravel 11 project** with:
 - ✅ Sample seeders with demo data
 
 
-3. **Install Node dependencies**
-   ```bash
-   npm install
-   ```
-
-4. **Copy environment file**
-   ```bash
-   cp .env.example .env
-   ```
-
-5. **Generate application key**
-   ```bash
-   php artisan key:generate
-   ```
-
 6. **Configure database** in `.env`:
    ```
    DB_CONNECTION=mysql

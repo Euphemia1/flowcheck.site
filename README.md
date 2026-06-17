@@ -1,9 +1,7 @@
- FlowCheck MVP - Procurement Management Platform
 
 FlowCheck is a multi-tenant,procurement management platform built  It's designed for SMEs, construction companies, and industrial organisations in Zambia to digitise their procurement lifecycle end-to-end.
 
  Project Status 
-
 
 - ✅ Full database migrations for all modules
 - ✅ Eloquent models with relationships
@@ -78,23 +76,6 @@ FlowCheck is a multi-tenant,procurement management platform built  It's designed
 - ⏳ Organisation settings controller & views needed
 
 
-
-Key environment variables in `.env`:
-
-```
-APP_NAME=FlowCheck
-APP_ENV=local
-APP_DEBUG=true
-APP_URL=http://localhost
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_DATABASE=flowcheck
-
-GOOGLE2FA_ENABLED=true
-SI68_COMPLIANCE_MODE=true
-CURRENCY_DEFAULT=ZMW
-```
 
 Immediate Priorities (MVP Phase 1)
 1. ✅ Create Purchase Request flow (create/submit/approve/reject)

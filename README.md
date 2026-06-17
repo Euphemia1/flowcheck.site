@@ -77,21 +77,7 @@ FlowCheck is a multi-tenant,procurement management platform built  It's designed
  14. Settings
 - ⏳ Organisation settings controller & views needed
 
- Key Technologies
 
-| Component | Technology |
-|-----------|------------|
-| Backend   | Laravel 11, PHP 8.2 |
-| Database  | MySQL 8 |
-| Frontend  | Blade, Tailwind CSS, Alpine.js |
-| Components | Livewire (for reactive UI) |
-| Auth      | Laravel Breeze, Sanctum, Fortify |
-| Permissions | Spatie Laravel Permission |
-| PDF       | DomPDF |
-| File Storage | Laravel Storage (S3-compatible) |
-| Queue     | Database queue driver |
-
-## Environment Variables
 
 Key environment variables in `.env`:
 

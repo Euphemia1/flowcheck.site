@@ -62,22 +62,22 @@ FlowCheck is a multi-tenant,procurement management platform built  It's designed
 - ✅ Initial dashboard view with Chart.js
 - ⏳ More advanced analytics & charts needed
 
-### 11. **Vendor Portal**
+ 11. Vendor Portal
 - ⏳ Separate authentication guard needed
 - ⏳ Portal views for vendors
 
-### 12. **Compliance & Audit**
+ 12. Compliance & Audit
 - ✅ AuditLog model & migrations
 - ⏳ Audit log viewer UI needed
 
-### 13. **Notifications**
+ 13. Notifications
 - ✅ Database notification migrations ready
 - ⏳ Email templates needed
 
-### 14. **Settings**
+ 14. Settings
 - ⏳ Organisation settings controller & views needed
 
-## Key Technologies
+ Key Technologies
 
 | Component | Technology |
 |-----------|------------|

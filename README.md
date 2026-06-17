@@ -17,21 +17,6 @@ This is a **complete scaffolded Laravel 11 project** with:
 - ✅ Sample seeders with demo data
 
 
-6. **Configure database** in `.env`:
-   ```
-   DB_CONNECTION=mysql
-   DB_HOST=127.0.0.1
-   DB_PORT=3306
-   DB_DATABASE=flowcheck
-   DB_USERNAME=root
-   DB_PASSWORD=
-   ```
-
-7. **Run migrations**
-   ```bash
-   php artisan migrate
-   ```
-
 8. **Seed demo data** (optional)
    ```bash
    php artisan db:seed

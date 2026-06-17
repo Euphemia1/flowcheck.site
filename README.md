@@ -1,5 +1,6 @@
 
-FlowCheck is a multi-tenant,procurement management platform built  It's designed for SMEs, construction companies, and industrial organisations in Zambia to digitise their procurement lifecycle end-to-end.
+FlowCheck is a multi-tenant,procurement management platform  designed  and developed for SMEs, construction companies, and industrial organisations in to digitise their procurement lifecycle end-to-end.
+
 
 MVP Phase 1
 1. ✅ Create Purchase Request flow (create/submit/approve/reject)

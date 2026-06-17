@@ -10,12 +10,14 @@ MVP Phase 1
 5. Build vendor approval workflow
 6. Add contract expiry notifications
 
+
 Phase 2
 1. RFQ management complete (create, send to vendors, quote comparison)
 2. Purchase Order PDF generation
 3. Tender management (BOQ, scoring, award)
 4. Vendor portal (separate authentication)
 5. Advanced analytics (spend trends, vendor performance)
+
 
  Phase 3
 1. Mobile app (React Native/Flutter consuming API)

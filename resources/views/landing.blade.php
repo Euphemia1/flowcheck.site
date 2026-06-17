@@ -9,224 +9,397 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700,800,900&display=swap" rel="stylesheet"/>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
-        body { background: #fff; color: #0f172a; }
+        * { box-sizing: border-box; }
+        body { background:#fff; color:#0f172a; font-family:'Figtree',sans-serif; margin:0; }
 
-        .nav-border { border-bottom: 1px solid #e2e8f0; }
+        /* ── Nav ── */
+        .nav-wrap { position:fixed; top:0; left:0; right:0; z-index:50; background:#fff; border-bottom:1px solid #e2e8f0; }
+        .nav-inner { max-width:1280px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; height:64px; }
+        .nav-logo { display:flex; align-items:center; gap:10px; }
+        .logo-box { width:32px; height:32px; background:#2563eb; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .logo-text { font-size:18px; font-weight:800; color:#0f172a; letter-spacing:-0.4px; }
+        .nav-links { display:flex; align-items:center; gap:2px; }
+        .nav-link { display:flex; align-items:center; gap:4px; padding:8px 14px; font-size:14px; font-weight:500; color:#475569; border-radius:8px; text-decoration:none; transition:all .15s; }
+        .nav-link:hover { color:#0f172a; background:#f1f5f9; }
+        .nav-actions { display:flex; align-items:center; gap:12px; }
+        .btn-login { font-size:14px; font-weight:600; color:#475569; text-decoration:none; padding:8px 12px; border-radius:8px; transition:all .15s; }
+        .btn-login:hover { color:#0f172a; background:#f1f5f9; }
+        .btn-cta { display:inline-flex; align-items:center; padding:10px 18px; background:#2563eb; color:#fff; font-size:14px; font-weight:700; border-radius:10px; text-decoration:none; transition:all .15s; }
+        .btn-cta:hover { background:#1d4ed8; box-shadow:0 4px 16px rgba(37,99,235,.35); transform:translateY(-1px); }
 
-        .btn-primary { background: #2563eb; color: #fff; transition: background .15s, box-shadow .15s; }
-        .btn-primary:hover { background: #1d4ed8; box-shadow: 0 4px 16px rgba(37,99,235,.3); }
+        /* ── Sections ── */
+        .section { padding:80px 0; }
+        .section-inner { max-width:1280px; margin:0 auto; padding:0 24px; }
+        .section-label { font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:12px; }
+        .section-title { font-size:32px; font-weight:900; line-height:1.2; color:#0f172a; }
+        .section-sub { font-size:16px; color:#64748b; line-height:1.7; margin-top:12px; }
 
-        .btn-outline { border: 1.5px solid #cbd5e1; color: #0f172a; background: #fff; transition: all .15s; }
-        .btn-outline:hover { border-color: #94a3b8; background: #f8fafc; }
+        /* ── Hero ── */
+        .hero-section { padding:112px 0 80px; background:linear-gradient(135deg, #f8faff 0%, #ffffff 40%, #f0f7ff 100%); }
+        .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+        .hero-h1 { font-size:52px; font-weight:900; line-height:1.08; color:#0f172a; letter-spacing:-1.5px; margin:0 0 20px; }
+        .hero-sub { font-size:17px; color:#64748b; line-height:1.7; margin:0 0 32px; max-width:420px; }
+        .hero-btns { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:28px; }
+        .btn-primary-lg { display:inline-flex; align-items:center; padding:13px 28px; background:#2563eb; color:#fff; font-size:14px; font-weight:700; border-radius:10px; text-decoration:none; transition:all .15s; }
+        .btn-primary-lg:hover { background:#1d4ed8; box-shadow:0 6px 20px rgba(37,99,235,.35); transform:translateY(-1px); }
+        .btn-outline-lg { display:inline-flex; align-items:center; padding:12px 28px; border:2px solid #e2e8f0; color:#0f172a; font-size:14px; font-weight:700; border-radius:10px; text-decoration:none; background:#fff; transition:all .15s; }
+        .btn-outline-lg:hover { border-color:#94a3b8; background:#f8fafc; }
+        .trust-checks { display:flex; flex-wrap:wrap; gap:20px; }
+        .trust-check { display:flex; align-items:center; gap:7px; font-size:13px; color:#64748b; }
+        .check-icon { color:#2563eb; flex-shrink:0; }
 
-        .hero-card-shadow { box-shadow: 0 24px 80px rgba(0,0,0,.13), 0 4px 18px rgba(0,0,0,.07); }
+        /* Dashboard card */
+        .dash-card { background:#fff; border-radius:20px; border:1px solid #e2e8f0; overflow:hidden; box-shadow:0 24px 80px rgba(15,23,42,.1), 0 4px 16px rgba(15,23,42,.06); }
+        .dash-topbar { display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid #f1f5f9; }
+        .dash-logo { display:flex; align-items:center; gap:8px; }
+        .dash-logo-box { width:20px; height:20px; background:#2563eb; border-radius:5px; display:flex; align-items:center; justify-content:center; }
+        .dash-topbar-icons { display:flex; gap:6px; }
+        .dash-icon { width:28px; height:28px; background:#f1f5f9; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+        .dash-body { display:flex; height:280px; }
+        .dash-sidebar { width:128px; background:#f8fafc; border-right:1px solid #f1f5f9; padding:10px 0; flex-shrink:0; }
+        .dash-sidebar-active { display:flex; align-items:center; gap:7px; padding:8px 10px; background:#2563eb; border-radius:7px; margin:0 8px 2px; }
+        .dash-sidebar-item { display:flex; align-items:center; gap:7px; padding:7px 10px; margin:0 8px 2px; border-radius:7px; }
+        .dash-sidebar-item:hover { background:#f1f5f9; }
+        .dash-main { flex:1; padding:14px; overflow:hidden; }
+        .dash-main-title { font-size:12px; font-weight:700; color:#0f172a; margin-bottom:12px; }
+        .dash-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:12px; }
+        .dash-stat { background:#fff; border:1px solid #f1f5f9; border-radius:10px; padding:10px; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+        .dash-stat-label { font-size:8.5px; color:#94a3b8; margin-bottom:4px; line-height:1.3; }
+        .dash-stat-val { font-size:14px; font-weight:900; color:#0f172a; }
+        .dash-stat-chg { font-size:8.5px; margin-top:3px; }
+        .chg-green { color:#16a34a; }
+        .chg-red { color:#dc2626; }
+        .dash-charts { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+        .dash-chart { background:#fff; border:1px solid #f1f5f9; border-radius:10px; padding:10px; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+        .dash-chart-title { font-size:9px; font-weight:600; color:#64748b; margin-bottom:8px; }
+        .donut-wrap { display:flex; align-items:center; gap:10px; }
+        .donut { width:60px; height:60px; border-radius:50%; background:conic-gradient(#2563eb 0deg 244deg,#f59e0b 244deg 290deg,#ef4444 290deg 360deg); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .donut::after { content:''; width:40px; height:40px; background:#fff; border-radius:50%; display:block; }
+        .donut-legend { display:flex; flex-direction:column; gap:4px; }
+        .donut-row { display:flex; align-items:center; gap:5px; font-size:8.5px; color:#64748b; }
+        .donut-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; display:inline-block; }
 
-        .trust-item { opacity: .45; filter: grayscale(1); transition: all .2s; }
-        .trust-item:hover { opacity: .75; filter: grayscale(0); }
+        /* ── Trust bar ── */
+        .trust-bar { background:#f8fafc; border-top:1px solid #e2e8f0; border-bottom:1px solid #e2e8f0; padding:40px 0; }
+        .trust-bar-label { font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#94a3b8; text-align:center; margin-bottom:28px; }
+        .trust-logos { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:32px; }
+        .trust-logo-item { display:flex; align-items:center; gap:7px; opacity:.5; filter:grayscale(1); transition:all .2s; text-decoration:none; }
+        .trust-logo-item:hover { opacity:.8; filter:grayscale(0); }
+        .trust-logo-name { font-size:13px; font-weight:800; color:#1e293b; letter-spacing:-.3px; }
 
-        .problem-icon-wrap { background: #eff6ff; border-radius: 50%; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; }
+        /* ── Problem ── */
+        .problem-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; }
+        .problem-item { text-align:center; padding:0 16px; }
+        .problem-icon { width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; }
+        .problem-title { font-size:15px; font-weight:700; color:#0f172a; margin:0 0 8px; }
+        .problem-desc { font-size:13.5px; color:#64748b; line-height:1.6; margin:0; }
 
-        .workflow-step-icon { width: 52px; height: 52px; background: #eff6ff; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
+        /* ── Solution ── */
+        .solution-section { background:#f8fafc; }
+        .solution-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
 
-        .stat-band { background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); }
+        /* PR mockup */
+        .pr-card { background:#fff; border-radius:18px; border:1px solid #e2e8f0; box-shadow:0 10px 40px rgba(15,23,42,.08); overflow:hidden; }
+        .pr-breadcrumb { padding:14px 20px 12px; border-bottom:1px solid #f1f5f9; }
+        .pr-back { font-size:12px; font-weight:600; color:#2563eb; }
+        .pr-body { padding:20px; }
+        .pr-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:16px; }
+        .pr-title { font-size:14px; font-weight:700; color:#0f172a; margin:0 0 8px; }
+        .pr-meta { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+        .pr-avatar { width:24px; height:24px; border-radius:50%; background:#dbeafe; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; color:#1d4ed8; flex-shrink:0; }
+        .pr-meta-text { font-size:12px; color:#64748b; }
+        .pr-badge-orange { background:#fff7ed; color:#c2410c; border:1px solid #fed7aa; font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; white-space:nowrap; flex-shrink:0; }
+        .pr-amounts { display:grid; grid-template-columns:1fr 1fr; gap:12px; background:#f8fafc; border-radius:10px; padding:12px; margin-bottom:16px; }
+        .pr-amount-label { font-size:10px; color:#94a3b8; margin-bottom:3px; }
+        .pr-amount-val { font-size:14px; font-weight:700; color:#0f172a; }
+        .pr-tabs { display:flex; gap:16px; border-bottom:1px solid #f1f5f9; margin-bottom:14px; }
+        .pr-tab { font-size:12px; padding-bottom:8px; color:#94a3b8; border:none; background:none; cursor:pointer; }
+        .pr-tab.active { color:#2563eb; border-bottom:2px solid #2563eb; font-weight:700; }
+        .approval-section-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#94a3b8; margin-bottom:8px; }
+        .approval-row { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid #f8fafc; }
+        .approval-num { width:20px; height:20px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; color:#64748b; flex-shrink:0; }
+        .approval-info { flex:1; min-width:0; }
+        .approval-role { font-size:11px; font-weight:600; color:#334155; }
+        .approval-name { font-size:10px; color:#94a3b8; }
+        .badge-green { background:#f0fdf4; color:#16a34a; padding:2px 9px; border-radius:20px; font-size:10px; font-weight:700; white-space:nowrap; }
+        .badge-amber { background:#fffbeb; color:#d97706; padding:2px 9px; border-radius:20px; font-size:10px; font-weight:700; white-space:nowrap; }
+        .badge-gray { background:#f8fafc; color:#94a3b8; padding:2px 9px; border-radius:20px; font-size:10px; font-weight:700; white-space:nowrap; }
 
-        .feature-spot-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; transition: all .2s; }
-        .feature-spot-card:hover { box-shadow: 0 10px 40px rgba(0,0,0,.09); transform: translateY(-3px); }
+        /* Solution right */
+        .solution-title { font-size:38px; font-weight:900; line-height:1.1; color:#0f172a; margin:0 0 24px; letter-spacing:-.8px; }
+        .feature-check-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:32px; }
+        .feature-check { display:flex; align-items:center; gap:8px; font-size:14px; font-weight:600; color:#334155; }
+        .feature-check-icon { width:18px; height:18px; background:#dbeafe; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
 
-        .testimonial-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; }
+        /* ── How it works ── */
+        .how-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:16px; position:relative; }
+        .how-connector { position:absolute; left:8.33%; right:8.33%; height:1px; background:linear-gradient(90deg,#e2e8f0,#93c5fd,#e2e8f0); top:26px; }
+        .how-step { display:flex; flex-direction:column; align-items:center; text-align:center; position:relative; }
+        .how-step-icon { width:52px; height:52px; background:linear-gradient(135deg,#eff6ff,#dbeafe); border:1.5px solid #bfdbfe; border-radius:14px; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; position:relative; z-index:1; }
+        .how-step-num { font-size:18px; font-weight:900; color:#1e40af; margin-bottom:4px; }
+        .how-step-title { font-size:13px; font-weight:700; color:#0f172a; margin-bottom:4px; }
+        .how-step-desc { font-size:11.5px; color:#64748b; line-height:1.5; }
 
-        .faq-row { border-bottom: 1px solid #e2e8f0; }
+        /* ── Stats band ── */
+        .stats-band { background:linear-gradient(135deg,#f0fdf4 0%,#ecfdf5 100%); border-top:1px solid #bbf7d0; border-bottom:1px solid #bbf7d0; padding:56px 0; }
+        .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; max-width:1280px; margin:0 auto; padding:0 24px; }
+        .stat-item { text-align:center; }
+        .stat-number { font-size:42px; font-weight:900; color:#16a34a; line-height:1; margin-bottom:4px; }
+        .stat-icon { font-size:22px; color:#22c55e; vertical-align:super; margin-left:4px; }
+        .stat-label { font-size:14px; font-weight:600; color:#166534; }
 
-        .cta-band { background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 50%, #312e81 100%); }
+        /* ── Everything you need ── */
+        .feat-cols-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; }
+        .feat-col-header { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+        .feat-col-icon { width:36px; height:36px; border-radius:9px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .feat-col-name { font-size:14px; font-weight:700; color:#0f172a; }
+        .feat-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
+        .feat-list li { display:flex; align-items:center; gap:8px; font-size:13.5px; color:#475569; line-height:1.4; }
+        .feat-dot { width:5px; height:5px; border-radius:50%; flex-shrink:0; }
 
-        .footer-dark { background: #0c1a33; }
+        /* ── Spotlight cards ── */
+        .spotlight-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+        .spotlight-card { background:#fff; border:1px solid #e2e8f0; border-radius:18px; overflow:hidden; transition:all .2s; }
+        .spotlight-card:hover { box-shadow:0 12px 48px rgba(15,23,42,.1); transform:translateY(-3px); }
+        .spotlight-preview { padding:20px; background:#f8fafc; border-bottom:1px solid #f1f5f9; min-height:170px; display:flex; align-items:center; }
+        .spotlight-label { padding:20px; }
+        .spotlight-title { font-size:15px; font-weight:700; color:#0f172a; margin:0 0 4px; }
+        .spotlight-desc { font-size:13px; color:#64748b; margin:0; line-height:1.5; }
 
-        /* Donut chart */
-        .donut-ring {
-            border-radius: 50%;
-            background: conic-gradient(#2563eb 0deg 244deg, #f59e0b 244deg 290deg, #ef4444 290deg 360deg);
-            display: flex; align-items: center; justify-content: center;
+        /* Workflow mini mockup */
+        .mini-card { background:#fff; border:1px solid #e8edf2; border-radius:12px; padding:14px; box-shadow:0 2px 8px rgba(0,0,0,.05); width:100%; }
+        .mini-label { font-size:11px; font-weight:700; color:#334155; margin-bottom:10px; }
+        .mini-approval { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+        .mini-avatar { width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; flex-shrink:0; }
+        .mini-info { flex:1; min-width:0; }
+        .mini-role { font-size:10px; font-weight:600; color:#334155; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .mini-name { font-size:9px; color:#94a3b8; }
+        .mini-badge { font-size:10px; font-weight:600; padding:2px 8px; border-radius:10px; white-space:nowrap; }
+        .mini-progress { display:flex; gap:4px; margin-top:10px; }
+        .mini-prog-bar { flex:1; height:4px; border-radius:2px; }
+
+        /* Budget mini mockup */
+        .budget-dept { font-size:11px; font-weight:700; color:#334155; margin-bottom:6px; }
+        .budget-row { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:10px; }
+        .budget-total { font-size:16px; font-weight:900; color:#0f172a; }
+        .budget-total-label { font-size:9px; color:#94a3b8; }
+        .budget-spent { font-size:14px; font-weight:700; color:#2563eb; text-align:right; }
+        .budget-spent-label { font-size:9px; color:#94a3b8; text-align:right; }
+        .budget-bar-bg { width:100%; height:8px; background:#e2e8f0; border-radius:4px; }
+        .budget-bar-fill { height:8px; background:linear-gradient(90deg,#2563eb,#60a5fa); border-radius:4px; }
+        .budget-pct { font-size:9px; color:#94a3b8; text-align:right; margin-top:3px; }
+
+        /* Analytics mini mockup */
+        .analytics-total { font-size:22px; font-weight:900; color:#0f172a; }
+        .analytics-chg { font-size:10px; color:#16a34a; margin-bottom:12px; }
+        .bar-chart { display:flex; align-items:flex-end; gap:4px; height:44px; }
+        .bar-item { flex:1; border-radius:2px 2px 0 0; min-width:0; }
+
+        /* ── Testimonials ── */
+        .testimonial-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+        .testimonial-card { background:#fff; border:1px solid #e2e8f0; border-radius:18px; padding:28px; border-top:3px solid transparent; }
+        .testimonial-card.c-blue { border-top-color:#2563eb; }
+        .testimonial-card.c-violet { border-top-color:#7c3aed; }
+        .testimonial-card.c-emerald { border-top-color:#059669; }
+        .stars { display:flex; gap:2px; margin-bottom:16px; }
+        .star { color:#f59e0b; font-size:16px; }
+        .testimonial-quote { font-size:14px; color:#334155; font-weight:500; line-height:1.7; margin:0 0 20px; }
+        .testimonial-author { display:flex; align-items:center; gap:10px; }
+        .author-avatar { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:#fff; flex-shrink:0; }
+        .author-name { font-size:13px; font-weight:700; color:#0f172a; }
+        .author-org { font-size:12px; color:#94a3b8; }
+
+        /* ── Pricing ── */
+        .pricing-section { background:#f8fafc; }
+        .pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:960px; margin:0 auto; }
+        .pricing-card { background:#fff; border:1px solid #e2e8f0; border-radius:20px; padding:28px; }
+        .pricing-card.popular { background:linear-gradient(160deg,#1d4ed8 0%,#1e3a8a 60%,#312e81 100%); border-color:#3b82f6; box-shadow:0 20px 60px rgba(37,99,235,.25); position:relative; }
+        .popular-badge { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:#f59e0b; color:#78350f; font-size:11px; font-weight:700; padding:4px 16px; border-radius:20px; white-space:nowrap; letter-spacing:.5px; text-transform:uppercase; }
+        .plan-name { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:#94a3b8; margin-bottom:12px; }
+        .plan-name.white { color:#bfdbfe; }
+        .plan-price { font-size:40px; font-weight:900; color:#0f172a; margin-bottom:4px; line-height:1; }
+        .plan-price.white { color:#fff; }
+        .plan-sub { font-size:13px; color:#94a3b8; margin-bottom:24px; }
+        .plan-sub.white { color:#93c5fd; }
+        .plan-btn { display:block; text-align:center; padding:11px; font-size:14px; font-weight:700; border-radius:12px; text-decoration:none; margin-bottom:28px; border:2px solid #e2e8f0; color:#0f172a; background:#fff; transition:all .15s; }
+        .plan-btn:hover { border-color:#94a3b8; background:#f8fafc; }
+        .plan-btn.white-btn { background:#fff; color:#1d4ed8; border-color:transparent; }
+        .plan-btn.white-btn:hover { background:#eff6ff; }
+        .plan-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
+        .plan-list li { display:flex; align-items:flex-start; gap:9px; font-size:13px; color:#475569; }
+        .plan-list li.white { color:#bfdbfe; }
+        .plan-check { width:16px; height:16px; border-radius:50%; background:#dcfce7; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+        .plan-check.blue { background:rgba(255,255,255,.2); }
+
+        /* ── FAQ ── */
+        .faq-section { background:#fff; }
+        .faq-header { display:flex; align-items:flex-start; justify-content:space-between; gap:24px; margin-bottom:48px; }
+        .faq-view-all { font-size:14px; font-weight:600; color:#2563eb; text-decoration:none; display:flex; align-items:center; gap:4px; white-space:nowrap; padding-top:8px; }
+        .faq-view-all:hover { color:#1d4ed8; }
+        .faq-grid { display:grid; grid-template-columns:1fr 1fr; gap:0 48px; }
+        .faq-row { border-bottom:1px solid #e2e8f0; padding:16px 0; }
+        .faq-btn { width:100%; display:flex; align-items:center; justify-content:space-between; gap:12px; text-align:left; background:none; border:none; cursor:pointer; padding:0; }
+        .faq-q { font-size:14px; font-weight:600; color:#0f172a; margin:0; }
+        .faq-icon { width:20px; height:20px; flex-shrink:0; color:#94a3b8; transition:transform .2s; }
+        .faq-a { font-size:13.5px; color:#64748b; line-height:1.7; padding-top:10px; margin:0; }
+
+        /* ── CTA band ── */
+        .cta-section { background:linear-gradient(135deg,#1e40af 0%,#1e3a8a 50%,#312e81 100%); padding:80px 0; text-align:center; }
+        .cta-title { font-size:40px; font-weight:900; color:#fff; margin:0 0 12px; letter-spacing:-.8px; }
+        .cta-sub { font-size:16px; color:#93c5fd; margin:0 0 40px; line-height:1.6; }
+        .cta-btns { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+        .cta-btn-white { display:inline-flex; align-items:center; padding:14px 32px; background:#fff; color:#1d4ed8; font-size:14px; font-weight:700; border-radius:12px; text-decoration:none; transition:all .15s; box-shadow:0 4px 14px rgba(0,0,0,.2); }
+        .cta-btn-white:hover { background:#eff6ff; transform:translateY(-1px); }
+        .cta-btn-ghost { display:inline-flex; align-items:center; padding:13px 32px; border:2px solid rgba(255,255,255,.3); color:#fff; font-size:14px; font-weight:700; border-radius:12px; text-decoration:none; transition:all .15s; }
+        .cta-btn-ghost:hover { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.5); }
+
+        /* ── Footer ── */
+        .footer-section { background:#0c1a33; padding:56px 0 32px; }
+        .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr; gap:40px; margin-bottom:48px; }
+        .footer-brand-desc { font-size:13.5px; color:#94a3b8; line-height:1.7; margin:12px 0 20px; }
+        .footer-socials { display:flex; gap:8px; }
+        .footer-social { width:32px; height:32px; background:#1e3a5f; border-radius:8px; display:flex; align-items:center; justify-content:center; text-decoration:none; color:#94a3b8; font-size:11px; font-weight:700; transition:all .15s; }
+        .footer-social:hover { background:#2563eb; color:#fff; }
+        .footer-col-title { font-size:13px; font-weight:700; color:#e2e8f0; margin:0 0 16px; letter-spacing:.3px; }
+        .footer-col-links { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
+        .footer-col-links a { font-size:13px; color:#94a3b8; text-decoration:none; transition:color .15s; display:block; }
+        .footer-col-links a:hover { color:#e2e8f0; }
+        .footer-bottom { border-top:1px solid #1e3a5f; padding-top:24px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+        .footer-copy { font-size:13px; color:#64748b; }
+        .footer-legal { display:flex; gap:24px; }
+        .footer-legal a { font-size:13px; color:#64748b; text-decoration:none; transition:color .15s; }
+        .footer-legal a:hover { color:#94a3b8; }
+
+        /* Responsive */
+        @media (max-width:1024px) {
+            .hero-grid, .solution-grid { grid-template-columns:1fr; }
+            .how-grid { grid-template-columns:repeat(3,1fr); }
+            .how-connector { display:none; }
+            .feat-cols-grid { grid-template-columns:repeat(2,1fr); }
+            .footer-grid { grid-template-columns:1fr 1fr; }
         }
-        .donut-ring::after {
-            content: '';
-            width: 58px; height: 58px;
-            background: #fff;
-            border-radius: 50%;
+        @media (max-width:768px) {
+            .hero-h1 { font-size:38px; }
+            .problem-grid, .testimonial-grid, .pricing-grid, .spotlight-grid { grid-template-columns:1fr; }
+            .feature-check-grid { grid-template-columns:1fr; }
+            .faq-grid { grid-template-columns:1fr; }
+            .stats-grid { grid-template-columns:1fr 1fr; }
+            .nav-links { display:none; }
         }
-
-        .status-badge-orange { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 20px; white-space: nowrap; }
-        .approval-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #f1f5f9; font-size: 12px; }
-        .badge-approved { background: #f0fdf4; color: #16a34a; padding: 1px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap; }
-        .badge-pending-s { background: #fff7ed; color: #d97706; padding: 1px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap; }
-        .badge-waiting { background: #f8fafc; color: #94a3b8; padding: 1px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap; }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body>
 
 {{-- ── Navigation ── --}}
-<nav class="fixed top-0 inset-x-0 z-50 bg-white nav-border">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
-
-            {{-- Logo --}}
-            <div class="flex items-center gap-2.5">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-                    </svg>
-                </div>
-                <span class="text-lg font-bold text-slate-900 tracking-tight">FlowCheck</span>
+<nav class="nav-wrap">
+    <div class="nav-inner">
+        <div class="nav-logo">
+            <div class="logo-box">
+                <svg width="16" height="16" fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
             </div>
-
-            {{-- Nav Links --}}
-            <div class="hidden md:flex items-center gap-1">
-                @foreach([['Product',true],['Solutions',true],['Resources',true],['Pricing',false],['About Us',false]] as [$label,$hasArrow])
-                <a href="{{ $label === 'Pricing' ? '#pricing' : '#' }}" class="flex items-center gap-1 px-4 py-2 text-sm text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition font-medium">
-                    {{ $label }}
-                    @if($hasArrow)
-                    <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                    @endif
-                </a>
-                @endforeach
-            </div>
-
-            {{-- Auth CTAs --}}
-            <div class="flex items-center gap-3">
-                <a href="{{ route('login') }}" class="hidden sm:block text-sm font-semibold text-slate-600 hover:text-slate-900 px-3 py-2 rounded-lg hover:bg-slate-50 transition">Log in</a>
-                <a href="{{ route('login') }}" class="btn-primary inline-flex items-center px-4 py-2.5 text-sm font-bold rounded-lg">Start Free Trial</a>
-            </div>
+            <span class="logo-text">FlowCheck</span>
+        </div>
+        <div class="nav-links">
+            @foreach([['Product',true],['Solutions',true],['Resources',true],['Pricing',false],['About Us',false]] as [$l,$a])
+            <a href="{{ $l==='Pricing'?'#pricing':'#' }}" class="nav-link">
+                {{ $l }}
+                @if($a)<svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color:#94a3b8"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>@endif
+            </a>
+            @endforeach
+        </div>
+        <div class="nav-actions">
+            <a href="{{ route('login') }}" class="btn-login">Log in</a>
+            <a href="{{ route('login') }}" class="btn-cta">Start Free Trial</a>
         </div>
     </div>
 </nav>
 
 {{-- ── Hero ── --}}
-<section class="pt-28 pb-20 overflow-hidden bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-
-            {{-- Left: Copy --}}
+<section class="hero-section">
+    <div class="section-inner">
+        <div class="hero-grid">
             <div>
-                <h1 class="text-5xl lg:text-[56px] font-black leading-[1.08] text-slate-900 mb-6 tracking-tight">
-                    Take control of<br>every purchase<br>request.
-                </h1>
-                <p class="text-lg text-slate-500 leading-relaxed mb-8 max-w-md">
-                    Replace spreadsheets, WhatsApp approvals, and email chains with a structured procurement workflow that gives finance complete visibility.
-                </p>
-                <div class="flex flex-wrap gap-3 mb-8">
-                    <a href="{{ route('login') }}" class="btn-primary inline-flex items-center px-6 py-3 text-sm font-bold rounded-lg">Start Free Trial</a>
-                    <a href="#how-it-works" class="btn-outline inline-flex items-center px-6 py-3 text-sm font-bold rounded-lg">Book a Demo</a>
+                <h1 class="hero-h1">Take control of<br>every purchase<br>request.</h1>
+                <p class="hero-sub">Replace spreadsheets, WhatsApp approvals, and email chains with a structured procurement workflow that gives finance complete visibility.</p>
+                <div class="hero-btns">
+                    <a href="{{ route('login') }}" class="btn-primary-lg">Start Free Trial</a>
+                    <a href="#how-it-works" class="btn-outline-lg">Book a Demo</a>
                 </div>
-                <div class="flex flex-wrap gap-6 text-sm text-slate-500">
+                <div class="trust-checks">
                     @foreach(['No credit card required','Easy setup','Cancel anytime'] as $t)
-                    <span class="flex items-center gap-1.5">
-                        <svg class="w-4 h-4 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    <span class="trust-check">
+                        <svg class="check-icon" width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                         {{ $t }}
                     </span>
                     @endforeach
                 </div>
             </div>
 
-            {{-- Right: Dashboard Mockup --}}
-            <div class="relative lg:pl-4">
-                <div class="bg-white rounded-2xl hero-card-shadow border border-slate-200 overflow-hidden">
-                    {{-- App top bar --}}
-                    <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-white">
-                        <div class="flex items-center gap-2">
-                            <div class="w-5 h-5 bg-blue-600 rounded flex items-center justify-center">
-                                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4"/></svg>
+            <div>
+                <div class="dash-card">
+                    <div class="dash-topbar">
+                        <div class="dash-logo">
+                            <div class="dash-logo-box">
+                                <svg width="12" height="12" fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4"/></svg>
                             </div>
-                            <span class="text-xs font-bold text-slate-800">FlowCheck</span>
+                            <span style="font-size:12px;font-weight:700;color:#0f172a">FlowCheck</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-7 h-7 bg-slate-100 rounded-full flex items-center justify-center">
-                                <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
-                            </div>
-                            <div class="w-7 h-7 bg-slate-100 rounded-full flex items-center justify-center">
-                                <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-                            </div>
+                        <div class="dash-topbar-icons">
+                            <div class="dash-icon"><svg width="14" height="14" fill="none" stroke="#94a3b8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg></div>
+                            <div class="dash-icon"><svg width="14" height="14" fill="none" stroke="#94a3b8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div>
                         </div>
                     </div>
-
-                    <div class="flex" style="min-height:290px">
-                        {{-- Sidebar --}}
-                        <div class="w-36 bg-slate-50 border-r border-slate-100 py-3 flex-shrink-0">
-                            <div class="px-3 mb-1">
-                                <div class="flex items-center gap-2 px-2 py-1.5 bg-blue-600 rounded-md">
-                                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                                    <span class="text-xs font-semibold text-white">Dashboard</span>
-                                </div>
+                    <div class="dash-body">
+                        <div class="dash-sidebar">
+                            <div class="dash-sidebar-active">
+                                <svg width="12" height="12" fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                                <span style="font-size:11px;font-weight:600;color:#fff">Dashboard</span>
                             </div>
                             @foreach([
                                 ['Requests','M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2'],
                                 ['Approvals','M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'],
                                 ['Vendors','M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z'],
-                                ['Purchase Orders','M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
+                                ['Purch. Orders','M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
                                 ['Invoices','M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z'],
                                 ['Reports','M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
                                 ['Settings','M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z'],
                             ] as [$name,$path])
-                            <div class="px-3 mb-0.5">
-                                <div class="flex items-center gap-2 px-2 py-1.5 rounded-md">
-                                    <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="{{ $path }}"/></svg>
-                                    <span class="text-xs text-slate-500">{{ $name }}</span>
-                                </div>
+                            <div class="dash-sidebar-item">
+                                <svg width="12" height="12" fill="none" stroke="#94a3b8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="{{ $path }}"/></svg>
+                                <span style="font-size:11px;color:#64748b">{{ $name }}</span>
                             </div>
                             @endforeach
                         </div>
-
-                        {{-- Main content --}}
-                        <div class="flex-1 p-4 overflow-hidden">
-                            <div class="text-xs font-bold text-slate-800 mb-3">Dashboard</div>
-
-                            {{-- Stat cards --}}
-                            <div class="grid grid-cols-4 gap-2 mb-4">
-                                @foreach([
-                                    ['Total Requests','128','+12% this month','text-emerald-600'],
-                                    ['Pending Approvals','34','+45% this month','text-red-500'],
-                                    ['Approved','94','+10% this month','text-emerald-600'],
-                                    ['Total Spend','$256,430','+40% this month','text-emerald-600'],
-                                ] as [$label,$val,$change,$cc])
-                                <div class="bg-white border border-slate-100 rounded-lg p-2.5 shadow-sm">
-                                    <div class="text-[9px] text-slate-400 mb-1 leading-tight">{{ $label }}</div>
-                                    <div class="text-sm font-black text-slate-900">{{ $val }}</div>
-                                    <div class="text-[9px] {{ $cc }} mt-0.5">{{ $change }}</div>
+                        <div class="dash-main">
+                            <div class="dash-main-title">Dashboard</div>
+                            <div class="dash-stats">
+                                @foreach([['Total Requests','128','+12% this month',true],['Pending Approvals','34','+45% this month',false],['Approved','94','+10% this month',true],['Total Spend','$256,430','+40% this month',true]] as [$l,$v,$c,$pos])
+                                <div class="dash-stat">
+                                    <div class="dash-stat-label">{{ $l }}</div>
+                                    <div class="dash-stat-val">{{ $v }}</div>
+                                    <div class="dash-stat-chg {{ $pos?'chg-green':'chg-red' }}">{{ $c }}</div>
                                 </div>
                                 @endforeach
                             </div>
-
-                            {{-- Charts row --}}
-                            <div class="grid grid-cols-2 gap-3">
-                                {{-- Donut --}}
-                                <div class="bg-white border border-slate-100 rounded-lg p-3 shadow-sm">
-                                    <div class="text-[9px] font-semibold text-slate-600 mb-2">Request Status</div>
-                                    <div class="flex items-center gap-3">
-                                        <div class="donut-ring flex-shrink-0" style="width:64px;height:64px;min-width:64px"></div>
-                                        <div class="space-y-1.5">
-                                            <div class="flex items-center gap-1.5 text-[9px] text-slate-600"><span class="w-2 h-2 rounded-full bg-blue-600 flex-shrink-0 inline-block"></span> Approved 94</div>
-                                            <div class="flex items-center gap-1.5 text-[9px] text-slate-600"><span class="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0 inline-block"></span> Pending 34</div>
-                                            <div class="flex items-center gap-1.5 text-[9px] text-slate-600"><span class="w-2 h-2 rounded-full bg-red-400 flex-shrink-0 inline-block"></span> Rejected 12</div>
+                            <div class="dash-charts">
+                                <div class="dash-chart">
+                                    <div class="dash-chart-title">Request Status</div>
+                                    <div class="donut-wrap">
+                                        <div class="donut"></div>
+                                        <div class="donut-legend">
+                                            <div class="donut-row"><span class="donut-dot" style="background:#2563eb"></span>Approved 94</div>
+                                            <div class="donut-row"><span class="donut-dot" style="background:#f59e0b"></span>Pending 34</div>
+                                            <div class="donut-row"><span class="donut-dot" style="background:#ef4444"></span>Rejected 12</div>
                                         </div>
                                     </div>
                                 </div>
-
-                                {{-- Line chart --}}
-                                <div class="bg-white border border-slate-100 rounded-lg p-3 shadow-sm">
-                                    <div class="text-[9px] font-semibold text-slate-600 mb-2">Spend Overview</div>
-                                    <svg viewBox="0 0 120 55" class="w-full" style="height:52px">
-                                        <defs>
-                                            <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
-                                                <stop offset="0%" stop-color="#2563eb" stop-opacity=".18"/>
-                                                <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
-                                            </linearGradient>
-                                        </defs>
-                                        <path d="M0 50 L20 40 L40 44 L60 30 L80 20 L100 10 L120 5" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M0 50 L20 40 L40 44 L60 30 L80 20 L100 10 L120 5 L120 55 L0 55Z" fill="url(#sg)"/>
-                                        <text x="0" y="54" font-size="6.5" fill="#94a3b8">Jan</text>
-                                        <text x="22" y="54" font-size="6.5" fill="#94a3b8">Feb</text>
-                                        <text x="44" y="54" font-size="6.5" fill="#94a3b8">Mar</text>
-                                        <text x="66" y="54" font-size="6.5" fill="#94a3b8">Apr</text>
-                                        <text x="88" y="54" font-size="6.5" fill="#94a3b8">May</text>
-                                        <text x="109" y="54" font-size="6.5" fill="#94a3b8">Jun</text>
+                                <div class="dash-chart">
+                                    <div class="dash-chart-title">Spend Overview</div>
+                                    <svg viewBox="0 0 110 52" style="width:100%;height:48px">
+                                        <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2563eb" stop-opacity=".2"/><stop offset="100%" stop-color="#2563eb" stop-opacity="0"/></linearGradient></defs>
+                                        <path d="M0 48 L18 38 L36 42 L55 28 L73 18 L91 9 L110 4" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M0 48 L18 38 L36 42 L55 28 L73 18 L91 9 L110 4 L110 52 L0 52Z" fill="url(#sg)"/>
+                                        <text x="0" y="52" font-size="6" fill="#94a3b8">Jan</text><text x="20" y="52" font-size="6" fill="#94a3b8">Feb</text><text x="40" y="52" font-size="6" fill="#94a3b8">Mar</text><text x="60" y="52" font-size="6" fill="#94a3b8">Apr</text><text x="80" y="52" font-size="6" fill="#94a3b8">May</text><text x="99" y="52" font-size="6" fill="#94a3b8">Jun</text>
                                     </svg>
                                 </div>
                             </div>
@@ -239,135 +412,100 @@
 </section>
 
 {{-- ── Trust Bar ── --}}
-<section class="py-12 border-t border-b border-slate-100 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p class="text-center text-xs font-semibold text-slate-400 uppercase tracking-widest mb-8">Trusted by procurement teams at</p>
-        <div class="flex flex-wrap justify-center items-center gap-10 lg:gap-14">
+<div class="trust-bar">
+    <div class="section-inner">
+        <p class="trust-bar-label">Trusted by procurement teams at</p>
+        <div class="trust-logos">
+            @foreach([['UNICEF','M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'],['Save the Children','M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'],['World Vision','M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z'],['PLAN International','M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z'],['IRC','M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'],['CARE','M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'],['OXFAM','M21 12a9 9 0 11-18 0 9 9 0 0118 0z']] as [$name,$icon])
+            <a href="#" class="trust-logo-item">
+                <svg width="16" height="16" fill="none" stroke="#1e293b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="{{ $icon }}"/></svg>
+                <span class="trust-logo-name">{{ $name }}</span>
+            </a>
+            @endforeach
+        </div>
+    </div>
+</div>
+
+{{-- ── Problem ── --}}
+<section class="section" id="features">
+    <div class="section-inner">
+        <h2 class="section-title" style="text-align:center;margin-bottom:48px">Procurement breaks down when processes live everywhere.</h2>
+        <div class="problem-grid">
             @foreach([
-                ['UNICEF','M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'],
-                ['Save the Children','M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'],
-                ['World Vision','M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z'],
-                ['PLAN International','M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z'],
-                ['IRC','M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'],
-                ['CARE','M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'],
-                ['OXFAM','M21 12a9 9 0 11-18 0 9 9 0 0118 0z'],
-            ] as [$name,$icon])
-            <div class="trust-item flex items-center gap-2 cursor-default">
-                <svg class="w-4 h-4 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="{{ $icon }}"/></svg>
-                <span class="text-sm font-bold text-slate-700 tracking-tight">{{ $name }}</span>
+                ['No Visibility','Requests disappear in chats and inboxes.','M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z','#fef2f2','#dc2626'],
+                ['No Control','Budgets are exceeded before finance can intervene.','M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z','#fff7ed','#ea580c'],
+                ['No Accountability','No clear record of who approved what.','M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z','#fefce8','#ca8a04'],
+            ] as [$title,$desc,$icon,$bg,$color])
+            <div class="problem-item">
+                <div class="problem-icon" style="background:{{ $bg }}">
+                    <svg width="24" height="24" fill="none" stroke="{{ $color }}" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ $icon }}"/></svg>
+                </div>
+                <h3 class="problem-title">{{ $title }}</h3>
+                <p class="problem-desc">{{ $desc }}</p>
             </div>
             @endforeach
         </div>
     </div>
 </section>
 
-{{-- ── Problem Section ── --}}
-<section class="py-20 bg-white" id="features">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-14">
-            <h2 class="text-3xl font-black text-slate-900">Procurement breaks down when processes<br class="hidden md:block"> live everywhere.</h2>
-        </div>
-        <div class="grid md:grid-cols-3 gap-10">
-            @foreach([
-                ['No Visibility','Requests disappear in chats and inboxes.','M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z'],
-                ['No Control','Budgets are exceeded before finance can intervene.','M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z'],
-                ['No Accountability','No clear record of who approved what.','M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'],
-            ] as [$title,$desc,$icon])
-            <div class="text-center px-4">
-                <div class="problem-icon-wrap mx-auto mb-5">
-                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="{{ $icon }}"/></svg>
-                </div>
-                <h3 class="text-base font-bold text-slate-900 mb-2">{{ $title }}</h3>
-                <p class="text-sm text-slate-500 leading-relaxed">{{ $desc }}</p>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-
-{{-- ── Solution Section ── --}}
-<section class="py-20 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-
-            {{-- PR Mockup --}}
+{{-- ── Solution ── --}}
+<section class="section solution-section">
+    <div class="section-inner">
+        <div class="solution-grid">
             <div>
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden">
-                    <div class="px-5 pt-4 pb-3 border-b border-slate-100">
-                        <span class="text-xs text-blue-600 font-semibold cursor-default">← Back to requests</span>
-                    </div>
-                    <div class="p-5">
-                        <div class="flex items-start justify-between mb-4 gap-3">
-                            <div class="min-w-0">
-                                <div class="text-sm font-bold text-slate-900">Purchase Request #PR-2024-1024</div>
-                                <div class="flex items-center gap-2 mt-1.5 flex-wrap">
-                                    <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-[10px] font-bold text-blue-700 flex-shrink-0">JC</div>
-                                    <span class="text-xs text-slate-500">Jane Cooper</span>
-                                    <span class="text-xs text-slate-300">·</span>
-                                    <span class="text-xs text-slate-500">Marketing Department</span>
+                <div class="pr-card">
+                    <div class="pr-breadcrumb"><span class="pr-back">← Back to requests</span></div>
+                    <div class="pr-body">
+                        <div class="pr-header">
+                            <div>
+                                <p class="pr-title">Purchase Request #PR-2024-1024</p>
+                                <div class="pr-meta">
+                                    <div class="pr-avatar">JC</div>
+                                    <span class="pr-meta-text">Jane Cooper</span>
+                                    <span style="color:#cbd5e1;font-size:12px">·</span>
+                                    <span class="pr-meta-text">Marketing Department</span>
                                 </div>
                             </div>
-                            <span class="status-badge-orange flex-shrink-0">⚡ Pending Approval</span>
+                            <span class="pr-badge-orange">⚡ Pending Approval</span>
                         </div>
-
-                        <div class="grid grid-cols-2 gap-4 mb-4 p-3 bg-slate-50 rounded-xl">
-                            <div>
-                                <div class="text-[10px] text-slate-400 mb-0.5">Amount</div>
-                                <div class="text-sm font-bold text-slate-900">$2,450.00 <span class="text-xs font-normal text-slate-400">USD</span></div>
-                            </div>
-                            <div>
-                                <div class="text-[10px] text-slate-400 mb-0.5">Date</div>
-                                <div class="text-sm font-semibold text-slate-700">May 15, 2024</div>
-                            </div>
+                        <div class="pr-amounts">
+                            <div><div class="pr-amount-label">Amount</div><div class="pr-amount-val">$2,450.00 <span style="font-size:11px;color:#94a3b8;font-weight:400">USD</span></div></div>
+                            <div><div class="pr-amount-label">Date</div><div class="pr-amount-val" style="font-size:13px">May 15, 2024</div></div>
                         </div>
-
-                        <div class="flex gap-4 border-b border-slate-100 mb-4">
-                            @foreach(['Details','Items (3)','Approvals','History'] as $tab)
-                            <button class="text-xs pb-2 {{ $loop->first ? 'text-blue-600 border-b-2 border-blue-600 font-semibold' : 'text-slate-400' }}">{{ $tab }}</button>
-                            @endforeach
+                        <div class="pr-tabs">
+                            <button class="pr-tab active">Details</button>
+                            <button class="pr-tab">Items (3)</button>
+                            <button class="pr-tab">Approvals</button>
+                            <button class="pr-tab">History</button>
                         </div>
-
-                        <div class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-2">Approval Workflow</div>
-                        <div>
-                            @foreach([
-                                ['1','Department Manager','Robert Fox','approved'],
-                                ['2','Finance Manager','Leslie Alexander','pending'],
-                                ['3','Procurement Head','Gary','waiting'],
-                            ] as [$n,$role,$name,$status])
-                            <div class="approval-row">
-                                <div class="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-[9px] font-bold text-slate-500 flex-shrink-0">{{ $n }}</div>
-                                <div class="flex-1 min-w-0">
-                                    <div class="text-[11px] font-medium text-slate-700 truncate">{{ $role }}</div>
-                                    <div class="text-[10px] text-slate-400">{{ $name }}</div>
-                                </div>
-                                @if($status === 'approved')
-                                <span class="badge-approved">Approved</span>
-                                @elseif($status === 'pending')
-                                <span class="badge-pending-s">Pending</span>
-                                @else
-                                <span class="badge-waiting">Waiting</span>
-                                @endif
-                            </div>
-                            @endforeach
+                        <p class="approval-section-label">Approval Workflow</p>
+                        @foreach([['1','Department Manager','Robert Fox','green'],['2','Finance Manager','Leslie Alexander','amber'],['3','Procurement Head','Gary','gray']] as [$n,$role,$name,$s])
+                        <div class="approval-row">
+                            <div class="approval-num">{{ $n }}</div>
+                            <div class="approval-info"><div class="approval-role">{{ $role }}</div><div class="approval-name">{{ $name }}</div></div>
+                            @if($s==='green')<span class="badge-green">Approved</span>
+                            @elseif($s==='amber')<span class="badge-amber">Pending</span>
+                            @else<span class="badge-gray">Waiting</span>@endif
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
-
-            {{-- Right copy --}}
             <div>
-                <h2 class="text-4xl font-black text-slate-900 leading-tight mb-6">One workflow<br>from request<br>to payment.</h2>
-                <div class="grid grid-cols-2 gap-3 mb-8">
+                <h2 class="solution-title">One workflow<br>from request<br>to payment.</h2>
+                <div class="feature-check-grid">
                     @foreach(['Purchase Requests','Purchase Orders','Approval Routing','Invoice Matching','Vendor Sourcing','Reporting'] as $feat)
-                    <div class="flex items-center gap-2 text-sm text-slate-700 font-medium">
-                        <svg class="w-4 h-4 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    <div class="feature-check">
+                        <div class="feature-check-icon">
+                            <svg width="10" height="10" fill="#2563eb" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        </div>
                         {{ $feat }}
                     </div>
                     @endforeach
                 </div>
-                <a href="{{ route('login') }}" class="btn-primary inline-flex items-center gap-2 px-6 py-3 text-sm font-bold rounded-lg">
+                <a href="{{ route('login') }}" class="btn-primary-lg" style="display:inline-flex;align-items:center;gap:8px">
                     See the Platform
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </a>
             </div>
         </div>
@@ -375,82 +513,69 @@
 </section>
 
 {{-- ── How It Works ── --}}
-<section class="py-20 bg-white" id="how-it-works">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-14">
-            <h2 class="text-3xl font-black text-slate-900">How FlowCheck works</h2>
-        </div>
-        <div class="relative">
-            <div class="hidden lg:block absolute left-[8.33%] right-[8.33%] h-px bg-gradient-to-r from-slate-100 via-blue-200 to-slate-100" style="top:26px"></div>
-            <div class="grid grid-cols-2 lg:grid-cols-6 gap-6">
-                @foreach([
-                    ['1','Request','Employees submit requests.','M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2'],
-                    ['2','Review','Approvers are notified automatically.','M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'],
-                    ['3','Vendor Selection','Collect and compare quotes.','M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z'],
-                    ['4','Purchase Order','Generate approved POs.','M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
-                    ['5','Invoice Matching','Verify spending against approvals.','M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z'],
-                    ['6','Reporting','Track budgets and spending.','M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
-                ] as [$num,$title,$desc,$icon])
-                <div class="flex flex-col items-center text-center relative">
-                    <div class="workflow-step-icon relative z-10">
-                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="{{ $icon }}"/></svg>
-                    </div>
-                    <div class="text-lg font-black text-slate-900 mb-1">{{ $num }}</div>
-                    <div class="text-sm font-bold text-slate-800 mb-1">{{ $title }}</div>
-                    <p class="text-xs text-slate-500 leading-relaxed">{{ $desc }}</p>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-</section>
-
-{{-- ── Stats Band ── --}}
-<section class="py-14 stat-band" id="impact">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+<section class="section" style="background:#fff" id="how-it-works">
+    <div class="section-inner">
+        <h2 class="section-title" style="text-align:center;margin-bottom:48px">How FlowCheck works</h2>
+        <div class="how-grid">
+            <div class="how-connector"></div>
             @foreach([
-                ['80%','Faster approval cycles','↑'],
-                ['100%','Approval visibility','✓'],
-                ['25%','Reduction in off-process spending','↓'],
-                ['<1 Day','Average setup time','⚡'],
-            ] as [$stat,$label,$icon])
-            <div class="text-center">
-                <div class="flex items-start justify-center gap-1.5 mb-1">
-                    <span class="text-4xl font-black text-emerald-600 leading-tight">{{ $stat }}</span>
-                    <span class="text-emerald-500 text-xl font-bold mt-1 leading-tight">{{ $icon }}</span>
+                ['1','Request','Employees submit requests.','M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2'],
+                ['2','Review','Approvers are notified automatically.','M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'],
+                ['3','Vendor Selection','Collect and compare quotes.','M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z'],
+                ['4','Purchase Order','Generate approved POs.','M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
+                ['5','Invoice Matching','Verify spending against approvals.','M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z'],
+                ['6','Reporting','Track budgets and spending.','M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
+            ] as [$num,$title,$desc,$icon])
+            <div class="how-step">
+                <div class="how-step-icon">
+                    <svg width="22" height="22" fill="none" stroke="#2563eb" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="{{ $icon }}"/></svg>
                 </div>
-                <div class="text-sm font-semibold text-slate-700">{{ $label }}</div>
+                <div class="how-step-num">{{ $num }}</div>
+                <div class="how-step-title">{{ $title }}</div>
+                <p class="how-step-desc">{{ $desc }}</p>
             </div>
             @endforeach
         </div>
     </div>
 </section>
 
-{{-- ── Everything You Need ── --}}
-<section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-14">
-            <h2 class="text-3xl font-black text-slate-900">Everything you need in one platform</h2>
+{{-- ── Stats Band ── --}}
+<div class="stats-band" id="impact">
+    <div class="stats-grid">
+        @foreach([['80%','Faster approval cycles','↑'],['100%','Approval visibility','✓'],['25%','Reduction in off-process spending','↓'],['<1 Day','Average setup time','⚡']] as [$s,$l,$i])
+        <div class="stat-item">
+            <div class="stat-number">{{ $s }}<span class="stat-icon">{{ $i }}</span></div>
+            <div class="stat-label">{{ $l }}</div>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            @foreach([
-                ['Governance & Control','M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',['Approval Workflows','Budget Controls','Audit Trail','Role Permissions']],
-                ['Purchasing','M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z',['Purchase Requests','RFQs','Purchase Orders','Invoice Matching']],
-                ['Vendor Management','M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z',['Vendor Database','Performance Tracking','Document Storage']],
-                ['Reporting & Analytics','M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',['Spend Analytics','Department Reports','Exportable Data']],
-            ] as [$colTitle,$colIcon,$items])
+        @endforeach
+    </div>
+</div>
+
+{{-- ── Everything You Need ── --}}
+<section class="section" style="background:#fff">
+    <div class="section-inner">
+        <h2 class="section-title" style="text-align:center;margin-bottom:48px">Everything you need in one platform</h2>
+        <div class="feat-cols-grid">
+            @php
+            $featCols = [
+                ['Governance & Control','M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',['Approval Workflows','Budget Controls','Audit Trail','Role Permissions'],'#dbeafe','#1d4ed8','#1d4ed8'],
+                ['Purchasing','M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z',['Purchase Requests','RFQs','Purchase Orders','Invoice Matching'],'#dcfce7','#16a34a','#16a34a'],
+                ['Vendor Management','M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z',['Vendor Database','Performance Tracking','Document Storage'],'#ede9fe','#7c3aed','#7c3aed'],
+                ['Reporting & Analytics','M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',['Spend Analytics','Department Reports','Exportable Data'],'#fef3c7','#d97706','#d97706'],
+            ];
+            @endphp
+            @foreach($featCols as [$colTitle,$colIcon,$items,$iconBg,$iconColor,$dotColor])
             <div>
-                <div class="flex items-center gap-2.5 mb-4">
-                    <div class="w-9 h-9 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="{{ $colIcon }}"/></svg>
+                <div class="feat-col-header">
+                    <div class="feat-col-icon" style="background:{{ $iconBg }}">
+                        <svg width="18" height="18" fill="none" stroke="{{ $iconColor }}" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="{{ $colIcon }}"/></svg>
                     </div>
-                    <h3 class="text-sm font-bold text-slate-900">{{ $colTitle }}</h3>
+                    <span class="feat-col-name">{{ $colTitle }}</span>
                 </div>
-                <ul class="space-y-2.5">
+                <ul class="feat-list">
                     @foreach($items as $item)
-                    <li class="flex items-center gap-2 text-sm text-slate-600">
-                        <svg class="w-3.5 h-3.5 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                    <li>
+                        <span class="feat-dot" style="background:{{ $dotColor }}"></span>
                         {{ $item }}
                     </li>
                     @endforeach
@@ -462,89 +587,73 @@
 </section>
 
 {{-- ── Feature Spotlights ── --}}
-<section class="py-20 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-14">
-            <h2 class="text-3xl font-black text-slate-900">Powerful features. Simple experience.</h2>
-        </div>
-        <div class="grid md:grid-cols-3 gap-6">
+<section class="section" style="background:#f8fafc">
+    <div class="section-inner">
+        <h2 class="section-title" style="text-align:center;margin-bottom:48px">Powerful features. Simple experience.</h2>
+        <div class="spotlight-grid">
 
             {{-- Approval Workflows --}}
-            <div class="feature-spot-card overflow-hidden">
-                <div class="p-5 bg-slate-50 border-b border-slate-100" style="height:170px">
-                    <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
-                        <div class="text-xs font-semibold text-slate-700 mb-3">Approval Workflow</div>
-                        @foreach([['Department Manager','Robert Fox','approved'],['Finance Manager','Leslie Alexander','pending']] as [$r,$n,$s])
-                        <div class="flex items-center gap-2 mb-2">
-                            <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-[9px] font-bold text-blue-700 flex-shrink-0">{{ strtoupper(substr($n,0,1)) }}</div>
-                            <div class="flex-1 min-w-0">
-                                <div class="text-[10px] font-medium text-slate-700 truncate">{{ $r }}</div>
-                                <div class="text-[9px] text-slate-400">{{ $n }}</div>
-                            </div>
-                            @if($s === 'approved')
-                            <span class="badge-approved">Approved</span>
-                            @else
-                            <span class="badge-pending-s">Pending</span>
-                            @endif
+            <div class="spotlight-card">
+                <div class="spotlight-preview">
+                    <div class="mini-card">
+                        <div class="mini-label">Approval Workflow</div>
+                        @foreach([['Robert Fox','Department Manager','RF','#dbeafe','#1d4ed8','green'],['Leslie Alexander','Finance Manager','LA','#ede9fe','#7c3aed','amber']] as [$name,$role,$init,$bg,$color,$s])
+                        <div class="mini-approval">
+                            <div class="mini-avatar" style="background:{{ $bg }};color:{{ $color }}">{{ $init }}</div>
+                            <div class="mini-info"><div class="mini-role">{{ $role }}</div><div class="mini-name">{{ $name }}</div></div>
+                            @if($s==='green')<span class="mini-badge" style="background:#f0fdf4;color:#16a34a">Approved</span>
+                            @else<span class="mini-badge" style="background:#fffbeb;color:#d97706">Pending</span>@endif
                         </div>
                         @endforeach
-                        <div class="mt-3 flex items-center gap-1.5">
-                            <div class="flex-1 h-1 bg-blue-600 rounded-full"></div>
-                            <div class="flex-1 h-1 bg-amber-300 rounded-full"></div>
-                            <div class="flex-1 h-1 bg-slate-200 rounded-full"></div>
+                        <div class="mini-progress">
+                            <div class="mini-prog-bar" style="background:#2563eb"></div>
+                            <div class="mini-prog-bar" style="background:#fbbf24"></div>
+                            <div class="mini-prog-bar" style="background:#e2e8f0"></div>
                         </div>
                     </div>
                 </div>
-                <div class="p-5">
-                    <h3 class="text-base font-bold text-slate-900 mb-1">Approval Workflows</h3>
-                    <p class="text-sm text-slate-500">Route requests automatically through your org structure.</p>
+                <div class="spotlight-label">
+                    <h3 class="spotlight-title">Approval Workflows</h3>
+                    <p class="spotlight-desc">Route requests automatically through your org structure.</p>
                 </div>
             </div>
 
             {{-- Budget Controls --}}
-            <div class="feature-spot-card overflow-hidden">
-                <div class="p-5 bg-slate-50 border-b border-slate-100" style="height:170px">
-                    <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
-                        <div class="text-xs font-semibold text-slate-700 mb-1">Marketing Department</div>
-                        <div class="flex items-end justify-between mb-3">
-                            <div>
-                                <div class="text-base font-black text-slate-900">$25,000.00</div>
-                                <div class="text-[10px] text-slate-400">Total Budget</div>
-                            </div>
-                            <div class="text-right">
-                                <div class="text-sm font-bold text-blue-600">$19,750.00</div>
-                                <div class="text-[10px] text-slate-400">Spent</div>
-                            </div>
+            <div class="spotlight-card">
+                <div class="spotlight-preview">
+                    <div class="mini-card">
+                        <div class="budget-dept">Marketing Department</div>
+                        <div class="budget-row">
+                            <div><div class="budget-total">$25,000.00</div><div class="budget-total-label">Total Budget</div></div>
+                            <div><div class="budget-spent">$19,750.00</div><div class="budget-spent-label">Spent</div></div>
                         </div>
-                        <div class="w-full bg-slate-100 rounded-full h-2 mb-1">
-                            <div class="bg-blue-600 h-2 rounded-full" style="width:79%"></div>
-                        </div>
-                        <div class="text-[10px] text-slate-400 text-right">79%</div>
+                        <div class="budget-bar-bg"><div class="budget-bar-fill" style="width:79%"></div></div>
+                        <div class="budget-pct">79%</div>
                     </div>
                 </div>
-                <div class="p-5">
-                    <h3 class="text-base font-bold text-slate-900 mb-1">Budget Controls</h3>
-                    <p class="text-sm text-slate-500">Prevent unauthorized spending before it happens.</p>
+                <div class="spotlight-label">
+                    <h3 class="spotlight-title">Budget Controls</h3>
+                    <p class="spotlight-desc">Prevent unauthorized spending before it happens.</p>
                 </div>
             </div>
 
             {{-- Spend Analytics --}}
-            <div class="feature-spot-card overflow-hidden">
-                <div class="p-5 bg-slate-50 border-b border-slate-100" style="height:170px">
-                    <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
-                        <div class="text-xs font-semibold text-slate-700 mb-0.5">Total Spend</div>
-                        <div class="text-xl font-black text-slate-900">$256,430</div>
-                        <div class="text-[10px] text-emerald-600 mb-3">↑ 10% vs last month</div>
-                        <div class="flex items-end gap-1 h-10">
+            <div class="spotlight-card">
+                <div class="spotlight-preview">
+                    <div class="mini-card">
+                        <div style="font-size:10px;font-weight:600;color:#64748b;margin-bottom:2px">Total Spend</div>
+                        <div class="analytics-total">$256,430</div>
+                        <div class="analytics-chg">↑ 10% vs last month</div>
+                        <div class="bar-chart">
                             @foreach([30,45,35,60,50,75,65,80,55,70,85,90] as $h)
-                            <div class="flex-1 bg-blue-600 rounded-sm" style="height:{{ $h }}%;opacity:{{ $loop->index > 8 ? '1' : '0.45' }}"></div>
+                            <div class="bar-item" style="height:{{ $h }}%;background:{{ $loop->index > 8 ? '#2563eb' : '#bfdbfe' }};border-radius:2px 2px 0 0"></div>
                             @endforeach
                         </div>
                     </div>
                 </div>
-                <div class="p-5">
-                    <h3 class="text-base font-bold text-slate-900 mb-1">Spend Analytics</h3>
-                    <p class="text-sm text-slate-500">Understand spending patterns across your organisation.</p>
+                <div class="spotlight-label">
+                    <h3 class="spotlight-title">Spend Analytics</h3>
+                    <p class="spotlight-desc">Understand spending patterns across your organisation.</p>
                 </div>
             </div>
         </div>
@@ -552,29 +661,23 @@
 </section>
 
 {{-- ── Testimonials ── --}}
-<section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-14">
-            <h2 class="text-3xl font-black text-slate-900">Loved by procurement teams</h2>
-        </div>
-        <div class="grid md:grid-cols-3 gap-6">
+<section class="section" style="background:#fff">
+    <div class="section-inner">
+        <h2 class="section-title" style="text-align:center;margin-bottom:48px">Loved by procurement teams</h2>
+        <div class="testimonial-grid">
             @foreach([
-                ['"FlowCheck reduced our approval time from 5 days to less than 24 hours."','Operations Manager','NGO Organization','OM','bg-blue-600'],
-                ['"We finally have complete visibility over our budgets and spending."','Finance Director','International School','FD','bg-violet-600'],
-                ['"The audit trail has made our compliance process smooth and stress-free."','Procurement Lead','Healthcare Nonprofit','PL','bg-emerald-600'],
-            ] as [$quote,$role,$org,$initials,$avatarBg])
-            <div class="testimonial-card p-7">
-                <div class="flex mb-5">
-                    @for($i=0;$i<5;$i++)
-                    <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    @endfor
-                </div>
-                <p class="text-slate-700 leading-relaxed mb-6 font-medium text-sm">{{ $quote }}</p>
-                <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 {{ $avatarBg }} rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0">{{ $initials }}</div>
+                ['"FlowCheck reduced our approval time from 5 days to less than 24 hours."','Operations Manager','NGO Organization','OM','#2563eb','c-blue'],
+                ['"We finally have complete visibility over our budgets and spending."','Finance Director','International School','FD','#7c3aed','c-violet'],
+                ['"The audit trail has made our compliance process smooth and stress-free."','Procurement Lead','Healthcare Nonprofit','PL','#059669','c-emerald'],
+            ] as [$q,$role,$org,$init,$avatarBg,$cls])
+            <div class="testimonial-card {{ $cls }}">
+                <div class="stars">@for($i=0;$i<5;$i++)<span class="star">★</span>@endfor</div>
+                <p class="testimonial-quote">{{ $q }}</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar" style="background:{{ $avatarBg }}">{{ $init }}</div>
                     <div>
-                        <div class="text-sm font-semibold text-slate-900">{{ $role }}</div>
-                        <div class="text-xs text-slate-500">{{ $org }}</div>
+                        <div class="author-name">{{ $role }}</div>
+                        <div class="author-org">{{ $org }}</div>
                     </div>
                 </div>
             </div>
@@ -584,59 +687,49 @@
 </section>
 
 {{-- ── Pricing ── --}}
-<section class="py-20 bg-slate-50" id="pricing">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-14">
-            <h2 class="text-3xl font-black text-slate-900 mb-3">Simple, transparent pricing</h2>
-            <p class="text-slate-500 text-base">Start free. Scale as you grow. No hidden fees.</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-
-            {{-- Starter --}}
-            <div class="bg-white border border-slate-200 rounded-2xl p-7">
-                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Starter</div>
-                <div class="mb-1"><span class="text-4xl font-black text-slate-900">Free</span></div>
-                <p class="text-sm text-slate-500 mb-6">For small teams getting started</p>
-                <a href="{{ route('login') }}" class="btn-outline block text-center py-2.5 text-sm font-bold rounded-xl mb-7">Get Started Free</a>
-                <ul class="space-y-3">
+<section class="section pricing-section" id="pricing">
+    <div class="section-inner">
+        <h2 class="section-title" style="text-align:center;margin-bottom:8px">Simple, transparent pricing</h2>
+        <p class="section-sub" style="text-align:center;margin-bottom:56px">Start free. Scale as you grow. No hidden fees.</p>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="plan-name">Starter</div>
+                <div class="plan-price">Free</div>
+                <div class="plan-sub">For small teams getting started</div>
+                <a href="{{ route('login') }}" class="plan-btn">Get Started Free</a>
+                <ul class="plan-list">
                     @foreach(['Up to 5 users','Purchase requests & approvals','Basic vendor list','Email notifications','30-day audit log'] as $f)
-                    <li class="flex items-center gap-2.5 text-sm text-slate-600">
-                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    <li>
+                        <div class="plan-check"><svg width="9" height="9" fill="#16a34a" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
                         {{ $f }}
                     </li>
                     @endforeach
                 </ul>
             </div>
-
-            {{-- Professional --}}
-            <div class="bg-blue-700 border border-blue-600 rounded-2xl p-7 relative shadow-xl shadow-blue-600/20">
-                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                    <span class="bg-amber-400 text-amber-900 text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wide">Most Popular</span>
-                </div>
-                <div class="text-xs font-bold text-blue-200 uppercase tracking-wider mb-3">Professional</div>
-                <div class="mb-1"><span class="text-3xl font-black text-white">ZMW 2,500</span></div>
-                <p class="text-sm text-blue-200 mb-6">per month · up to 25 users</p>
-                <a href="{{ route('login') }}" class="block text-center py-2.5 text-sm font-bold rounded-xl mb-7 bg-white text-blue-700 hover:bg-blue-50 transition">Start Free Trial</a>
-                <ul class="space-y-3">
+            <div class="pricing-card popular">
+                <div class="popular-badge">Most Popular</div>
+                <div class="plan-name white">Professional</div>
+                <div class="plan-price white">ZMW 2,500</div>
+                <div class="plan-sub white">per month · up to 25 users</div>
+                <a href="{{ route('login') }}" class="plan-btn white-btn">Start Free Trial</a>
+                <ul class="plan-list">
                     @foreach(['Everything in Starter','Up to 25 users','Full RFQ & PO management','3-way invoice matching','Budget tracking & alerts','Contract management','Full audit trail','Priority support'] as $f)
-                    <li class="flex items-center gap-2.5 text-sm text-blue-100">
-                        <svg class="w-4 h-4 text-blue-300 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    <li class="white">
+                        <div class="plan-check blue"><svg width="9" height="9" fill="#fff" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
                         {{ $f }}
                     </li>
                     @endforeach
                 </ul>
             </div>
-
-            {{-- Enterprise --}}
-            <div class="bg-white border border-slate-200 rounded-2xl p-7">
-                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Enterprise</div>
-                <div class="mb-1"><span class="text-4xl font-black text-slate-900">Custom</span></div>
-                <p class="text-sm text-slate-500 mb-6">For large organisations & institutions</p>
-                <a href="#" class="btn-outline block text-center py-2.5 text-sm font-bold rounded-xl mb-7">Contact Sales</a>
-                <ul class="space-y-3">
+            <div class="pricing-card">
+                <div class="plan-name">Enterprise</div>
+                <div class="plan-price">Custom</div>
+                <div class="plan-sub">For large organisations & institutions</div>
+                <a href="#" class="plan-btn">Contact Sales</a>
+                <ul class="plan-list">
                     @foreach(['Unlimited users','Everything in Professional','Tenders & BOQ management','Custom approval workflows','Dedicated onboarding','SSO & advanced security','Custom reporting','SLA support'] as $f)
-                    <li class="flex items-center gap-2.5 text-sm text-slate-600">
-                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    <li>
+                        <div class="plan-check"><svg width="9" height="9" fill="#16a34a" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
                         {{ $f }}
                     </li>
                     @endforeach
@@ -647,16 +740,13 @@
 </section>
 
 {{-- ── FAQ ── --}}
-<section class="py-20 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-start justify-between mb-12 gap-6">
-            <h2 class="text-3xl font-black text-slate-900">Frequently asked<br>questions</h2>
-            <a href="#" class="text-sm font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1 mt-2 whitespace-nowrap">
-                View all FAQs
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            </a>
+<section class="section faq-section">
+    <div class="section-inner" style="max-width:900px">
+        <div class="faq-header">
+            <h2 class="section-title">Frequently asked<br>questions</h2>
+            <a href="#" class="faq-view-all">View all FAQs <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
         </div>
-        <div class="grid md:grid-cols-2 gap-x-14">
+        <div class="faq-grid">
             @foreach([
                 ['How long does setup take?','Most teams are live within one working day. Our onboarding guides you through importing vendors, configuring workflows, and inviting your team — no IT support needed.'],
                 ['Do we need procurement expertise?','No. FlowCheck is designed for finance and operations teams. The interface is intuitive enough that any team member can raise a request on day one.'],
@@ -665,13 +755,13 @@
                 ['Is our data secure?','Your data is encrypted in transit and at rest. Role-based access ensures users only see what they\'re permitted to see.'],
                 ['Can we upgrade or downgrade later?','Absolutely. Change your plan at any time from your organisation settings — no penalties or lock-in contracts.'],
             ] as $faq)
-            <div class="faq-row py-4" x-data="{ open: false }">
-                <button class="w-full flex items-center justify-between gap-4 text-left" @click="open = !open">
-                    <span class="text-sm font-semibold text-slate-900">{{ $faq[0] }}</span>
-                    <svg class="w-4 h-4 text-slate-400 flex-shrink-0 transition-transform duration-200" :class="open ? 'rotate-45' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            <div class="faq-row" x-data="{ open: false }">
+                <button class="faq-btn" @click="open = !open">
+                    <span class="faq-q">{{ $faq[0] }}</span>
+                    <svg class="faq-icon" :style="open ? 'transform:rotate(45deg)' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                 </button>
-                <div x-show="open" x-collapse class="pt-3">
-                    <p class="text-sm text-slate-500 leading-relaxed">{{ $faq[1] }}</p>
+                <div x-show="open" x-collapse>
+                    <p class="faq-a">{{ $faq[1] }}</p>
                 </div>
             </div>
             @endforeach
@@ -680,33 +770,31 @@
 </section>
 
 {{-- ── CTA Band ── --}}
-<section class="cta-band py-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-4xl font-black text-white mb-4">Bring order to procurement.</h2>
-        <p class="text-blue-200 text-base mb-10 leading-relaxed">Stop managing purchases through spreadsheets and chat messages.</p>
-        <div class="flex flex-wrap justify-center gap-4">
-            <a href="{{ route('login') }}" class="inline-flex items-center px-7 py-3.5 bg-white text-blue-700 text-sm font-bold rounded-xl hover:bg-blue-50 transition shadow-lg">Start Free Trial</a>
-            <a href="#" class="inline-flex items-center px-7 py-3.5 border-2 border-white/30 text-white text-sm font-bold rounded-xl hover:bg-white/10 transition">Book a Demo</a>
+<section class="cta-section">
+    <div class="section-inner">
+        <h2 class="cta-title">Bring order to procurement.</h2>
+        <p class="cta-sub">Stop managing purchases through spreadsheets and chat messages.</p>
+        <div class="cta-btns">
+            <a href="{{ route('login') }}" class="cta-btn-white">Start Free Trial</a>
+            <a href="#" class="cta-btn-ghost">Book a Demo</a>
         </div>
     </div>
 </section>
 
 {{-- ── Footer ── --}}
-<footer class="footer-dark pt-14 pb-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-6 gap-10 mb-12">
-            <div class="col-span-2">
-                <div class="flex items-center gap-2.5 mb-4">
-                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-                    </div>
-                    <span class="font-bold text-white text-lg">FlowCheck</span>
+<footer class="footer-section">
+    <div class="section-inner">
+        <div class="footer-grid">
+            <div>
+                <div style="display:flex;align-items:center;gap:10px">
+                    <div class="logo-box"><svg width="16" height="16" fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div>
+                    <span style="font-size:17px;font-weight:800;color:#f1f5f9;letter-spacing:-.3px">FlowCheck</span>
                 </div>
-                <p class="text-sm text-slate-400 leading-relaxed mb-5">The modern procurement platform for control, visibility, and compliance.</p>
-                <div class="flex gap-2">
-                    @foreach(['in','tw','yt'] as $s)
-                    <a href="#" class="w-8 h-8 bg-slate-700 rounded-lg flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-600 transition text-xs font-bold">{{ $s }}</a>
-                    @endforeach
+                <p class="footer-brand-desc">The modern procurement platform for control, visibility, and compliance.</p>
+                <div class="footer-socials">
+                    <a href="#" class="footer-social">in</a>
+                    <a href="#" class="footer-social">tw</a>
+                    <a href="#" class="footer-social">yt</a>
                 </div>
             </div>
             @foreach([
@@ -716,20 +804,20 @@
                 ['Company',['About Us','Careers','Contact','Privacy Policy']],
             ] as [$col,$links])
             <div>
-                <h4 class="text-sm font-semibold text-white mb-4">{{ $col }}</h4>
-                <ul class="space-y-3">
+                <h4 class="footer-col-title">{{ $col }}</h4>
+                <ul class="footer-col-links">
                     @foreach($links as $link)
-                    <li><a href="#" class="text-sm text-slate-400 hover:text-white transition">{{ $link }}</a></li>
+                    <li><a href="#">{{ $link }}</a></li>
                     @endforeach
                 </ul>
             </div>
             @endforeach
         </div>
-        <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p class="text-sm text-slate-500">© 2025 FlowCheck. All rights reserved.</p>
-            <div class="flex gap-6">
-                <a href="#" class="text-sm text-slate-500 hover:text-white transition">Privacy Policy</a>
-                <a href="#" class="text-sm text-slate-500 hover:text-white transition">Terms of Service</a>
+        <div class="footer-bottom">
+            <span class="footer-copy">© 2025 FlowCheck. All rights reserved.</span>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
             </div>
         </div>
     </div>

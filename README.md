@@ -38,17 +38,6 @@ FlowCheck is a multi-tenant,procurement management platform built  It's designed
 - ✅ Models & database ready
 - ⏳ PDF generation (DomPDF) integration needed
 
- 6. Goods Receipt Note (GRN)
-- ✅ Models & database ready
-- ⏳ Mobile-friendly views needed
-
-7. Invoice Management & 3-Way Matching
-- ✅ ThreeWayMatchingService implemented
-- ✅ Invoice controller with matching logic
-- ⏳ Invoice views & matching UI needed
-
-
-
 
 MVP Phase 1
 1. ✅ Create Purchase Request flow (create/submit/approve/reject)

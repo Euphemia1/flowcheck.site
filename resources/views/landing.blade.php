@@ -209,27 +209,6 @@
         .author-name { font-size:13px; font-weight:700; color:#0f172a; }
         .author-org { font-size:12px; color:#94a3b8; }
 
-        /* ── Pricing ── */
-        .pricing-section { background:#f8fafc; }
-        .pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:960px; margin:0 auto; }
-        .pricing-card { background:#fff; border:1px solid #e2e8f0; border-radius:20px; padding:28px; }
-        .pricing-card.popular { background:linear-gradient(160deg,#1d4ed8 0%,#1e3a8a 60%,#312e81 100%); border-color:#3b82f6; box-shadow:0 20px 60px rgba(37,99,235,.25); position:relative; }
-        .popular-badge { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:#f59e0b; color:#78350f; font-size:11px; font-weight:700; padding:4px 16px; border-radius:20px; white-space:nowrap; letter-spacing:.5px; text-transform:uppercase; }
-        .plan-name { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:#94a3b8; margin-bottom:12px; }
-        .plan-name.white { color:#bfdbfe; }
-        .plan-price { font-size:40px; font-weight:900; color:#0f172a; margin-bottom:4px; line-height:1; }
-        .plan-price.white { color:#fff; }
-        .plan-sub { font-size:13px; color:#94a3b8; margin-bottom:24px; }
-        .plan-sub.white { color:#93c5fd; }
-        .plan-btn { display:block; text-align:center; padding:11px; font-size:14px; font-weight:700; border-radius:12px; text-decoration:none; margin-bottom:28px; border:2px solid #e2e8f0; color:#0f172a; background:#fff; transition:all .15s; }
-        .plan-btn:hover { border-color:#94a3b8; background:#f8fafc; }
-        .plan-btn.white-btn { background:#fff; color:#1d4ed8; border-color:transparent; }
-        .plan-btn.white-btn:hover { background:#eff6ff; }
-        .plan-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
-        .plan-list li { display:flex; align-items:flex-start; gap:9px; font-size:13px; color:#475569; }
-        .plan-list li.white { color:#bfdbfe; }
-        .plan-check { width:16px; height:16px; border-radius:50%; background:#dcfce7; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
-        .plan-check.blue { background:rgba(255,255,255,.2); }
 
         /* ── FAQ ── */
         .faq-section { background:#fff; }
@@ -280,7 +259,7 @@
         }
         @media (max-width:768px) {
             .hero-h1 { font-size:38px; }
-            .problem-grid, .testimonial-grid, .pricing-grid, .spotlight-grid { grid-template-columns:1fr; }
+            .problem-grid, .testimonial-grid, .spotlight-grid { grid-template-columns:1fr; }
             .feature-check-grid { grid-template-columns:1fr; }
             .faq-grid { grid-template-columns:1fr; }
             .stats-grid { grid-template-columns:1fr 1fr; }
@@ -300,8 +279,8 @@
             <span class="logo-text">FlowCheck</span>
         </div>
         <div class="nav-links">
-            @foreach([['Product',true],['Solutions',true],['Resources',true],['Pricing',false],['About Us',false]] as [$l,$a])
-            <a href="{{ $l==='Pricing'?'#pricing':'#' }}" class="nav-link">
+            @foreach([['Product',true],['Solutions',true],['Resources',true],['About Us',false]] as [$l,$a])
+            <a href="#" class="nav-link">
                 {{ $l }}
                 @if($a)<svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color:#94a3b8"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>@endif
             </a>
@@ -682,59 +661,6 @@
                 </div>
             </div>
             @endforeach
-        </div>
-    </div>
-</section>
-
-{{-- ── Pricing ── --}}
-<section class="section pricing-section" id="pricing">
-    <div class="section-inner">
-        <h2 class="section-title" style="text-align:center;margin-bottom:8px">Simple, transparent pricing</h2>
-        <p class="section-sub" style="text-align:center;margin-bottom:56px">Start free. Scale as you grow. No hidden fees.</p>
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <div class="plan-name">Starter</div>
-                <div class="plan-price">Free</div>
-                <div class="plan-sub">For small teams getting started</div>
-                <a href="{{ route('login') }}" class="plan-btn">Get Started Free</a>
-                <ul class="plan-list">
-                    @foreach(['Up to 5 users','Purchase requests & approvals','Basic vendor list','Email notifications','30-day audit log'] as $f)
-                    <li>
-                        <div class="plan-check"><svg width="9" height="9" fill="#16a34a" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
-                        {{ $f }}
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-            <div class="pricing-card popular">
-                <div class="popular-badge">Most Popular</div>
-                <div class="plan-name white">Professional</div>
-                <div class="plan-price white">ZMW 2,500</div>
-                <div class="plan-sub white">per month · up to 25 users</div>
-                <a href="{{ route('login') }}" class="plan-btn white-btn">Start Free Trial</a>
-                <ul class="plan-list">
-                    @foreach(['Everything in Starter','Up to 25 users','Full RFQ & PO management','3-way invoice matching','Budget tracking & alerts','Contract management','Full audit trail','Priority support'] as $f)
-                    <li class="white">
-                        <div class="plan-check blue"><svg width="9" height="9" fill="#fff" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
-                        {{ $f }}
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-            <div class="pricing-card">
-                <div class="plan-name">Enterprise</div>
-                <div class="plan-price">Custom</div>
-                <div class="plan-sub">For large organisations & institutions</div>
-                <a href="#" class="plan-btn">Contact Sales</a>
-                <ul class="plan-list">
-                    @foreach(['Unlimited users','Everything in Professional','Tenders & BOQ management','Custom approval workflows','Dedicated onboarding','SSO & advanced security','Custom reporting','SLA support'] as $f)
-                    <li>
-                        <div class="plan-check"><svg width="9" height="9" fill="#16a34a" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
-                        {{ $f }}
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
         </div>
     </div>
 </section>

@@ -258,18 +258,49 @@
             .footer-grid { grid-template-columns:1fr 1fr; }
         }
         @media (max-width:768px) {
-            .hero-h1 { font-size:38px; }
-            .problem-grid, .testimonial-grid, .spotlight-grid { grid-template-columns:1fr; }
+            .hero-h1 { font-size:34px; letter-spacing:-0.8px; }
+            .hero-sub { font-size:15px; }
+            .section { padding:56px 0; }
+            .section-inner { padding:0 16px; }
+            .hero-section { padding:84px 0 56px; }
+            .hero-grid { grid-template-columns:1fr; gap:32px; }
+            .problem-grid { grid-template-columns:1fr; gap:28px; }
+            .solution-grid { grid-template-columns:1fr; gap:32px; }
+            .testimonial-grid, .spotlight-grid { grid-template-columns:1fr; }
             .feature-check-grid { grid-template-columns:1fr; }
             .faq-grid { grid-template-columns:1fr; }
-            .stats-grid { grid-template-columns:1fr 1fr; }
+            .stats-grid { grid-template-columns:1fr 1fr; gap:20px; }
+            .stat-number { font-size:34px; }
+            .feat-cols-grid { grid-template-columns:1fr; }
+            .how-grid { grid-template-columns:repeat(2,1fr); gap:20px; }
+            .footer-grid { grid-template-columns:1fr; gap:28px; }
             .nav-links { display:none; }
+            .hamburger { display:flex !important; }
+            .btn-login { display:none; }
+            .btn-cta { padding:8px 14px; font-size:13px; }
+            /* Dashboard card on mobile */
+            .dash-stats { grid-template-columns:repeat(2,1fr); }
+            .dash-sidebar { width:100px; }
+            .dash-stat-val { font-size:11px; }
+            .dash-chart { padding:8px; }
+            /* Mobile menu */
+            .mobile-menu { display:block !important; }
         }
+        /* Hamburger hidden by default */
+        .hamburger { display:none; background:none; border:none; cursor:pointer; padding:8px; border-radius:8px; align-items:center; justify-content:center; transition:background .15s; }
+        .hamburger:hover { background:#f1f5f9; }
+        /* Mobile dropdown */
+        .mobile-menu { display:none; position:fixed; top:64px; left:0; right:0; background:#fff; border-bottom:2px solid #e2e8f0; z-index:49; padding:12px 16px 20px; box-shadow:0 8px 24px rgba(0,0,0,.08); }
+        .mobile-menu a { display:block; padding:13px 12px; font-size:15px; font-weight:600; color:#334155; text-decoration:none; border-radius:10px; transition:background .15s; }
+        .mobile-menu a:hover { background:#f1f5f9; color:#0f172a; }
+        .mobile-menu-divider { height:1px; background:#f1f5f9; margin:8px 0; }
+        .mobile-menu-cta { display:block; text-align:center; padding:13px; background:#2563eb; color:#fff !important; border-radius:12px; font-size:15px; font-weight:700; text-decoration:none; margin-top:10px; }
     </style>
 </head>
 <body>
 
 {{-- ── Navigation ── --}}
+<div x-data="{ open: false }">
 <nav class="nav-wrap">
     <div class="nav-inner">
         <div class="nav-logo">
@@ -289,9 +320,24 @@
         <div class="nav-actions">
             <a href="{{ route('login') }}" class="btn-login">Log in</a>
             <a href="{{ route('login') }}" class="btn-cta">Start Free Trial</a>
+            {{-- Hamburger (mobile only) --}}
+            <button class="hamburger" @click="open = !open" aria-label="Toggle menu">
+                <svg x-show="!open" width="22" height="22" fill="none" stroke="#334155" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <svg x-show="open" width="22" height="22" fill="none" stroke="#334155" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
         </div>
     </div>
 </nav>
+{{-- Mobile dropdown menu --}}
+<div class="mobile-menu" x-show="open" @click.outside="open = false" x-transition style="display:none">
+    @foreach(['Features','How It Works','Impact','About Us'] as $item)
+    <a href="#{{ strtolower(str_replace(' ','-',$item)) }}">{{ $item }}</a>
+    @endforeach
+    <div class="mobile-menu-divider"></div>
+    <a href="{{ route('login') }}" style="padding:13px 12px;font-size:15px;font-weight:600;color:#334155;display:block;text-decoration:none;border-radius:10px">Log in</a>
+    <a href="{{ route('login') }}" class="mobile-menu-cta">Start Free Trial</a>
+</div>
+</div>
 
 {{-- ── Hero ── --}}
 <section class="hero-section">
@@ -314,8 +360,8 @@
                 </div>
             </div>
 
-            <div>
-                <div class="dash-card">
+            <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+                <div class="dash-card" style="min-width:340px">
                     <div class="dash-topbar">
                         <div class="dash-logo">
                             <div class="dash-logo-box">

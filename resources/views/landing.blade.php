@@ -786,7 +786,7 @@
             @endforeach
         </div>
         <div class="footer-bottom">
-            <span class="footer-copy">© 2025 FlowCheck. All rights reserved.</span>
+            <span class="footer-copy">© {{ date('Y') }} FlowCheck. All rights reserved.</span>
             <div class="footer-legal">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>

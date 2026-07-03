@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /bootstrap/cache/*.php
+.env
 .env.backup
 .env.production.backup
 .phpunit.result.cache

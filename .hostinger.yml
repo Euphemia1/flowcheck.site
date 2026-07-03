@@ -6,7 +6,7 @@ build:
       cat > .env << EOF
       APP_NAME=FlowCheck
       APP_ENV=production
-      APP_KEY=base64:hfrtdo1BfzVyvF7nXxil9OcIvhaAX2G92BoEfAwnmi4=
+      APP_KEY=${APP_KEY}
       APP_DEBUG=false
       APP_URL=https://flowcheck.site
       LOG_CHANNEL=stack

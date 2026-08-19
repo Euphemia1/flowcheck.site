@@ -5,7 +5,15 @@
       "Bash(npm --version)",
       "Bash(grep -E \"\\\\.\\(php\\)$\")",
       "Bash(grep -E \"\\\\.php$\")",
-      "Bash(find \"C:\\\\Users\\\\XPS\\\\Desktop\\\\flowcheck.ai\\\\.claude\\\\worktrees\\\\goofy-rhodes-0010c3\\\\app\\\\Models\" -type f -name \"*.php\" -exec grep -l \"RfqItem\" {} \\\\;)"
+      "Bash(find \"C:\\\\Users\\\\XPS\\\\Desktop\\\\flowcheck.ai\\\\.claude\\\\worktrees\\\\goofy-rhodes-0010c3\\\\app\\\\Models\" -type f -name \"*.php\" -exec grep -l \"RfqItem\" {} \\\\;)",
+      "Bash(python -c ' *)",
+      "Bash(pip install *)",
+      "Bash(cp \"C:/Users/XPS/Downloads/Retsi profile EBT.pdf\" \"C:/Users/XPS/Downloads/reti-master/reti-master/downloads/RETI-Profile-Brochure.pdf\")",
+      "Bash(cp \"C:/Users/XPS/Downloads/List of courses under EBT.pdf\" \"C:/Users/XPS/Downloads/reti-master/reti-master/downloads/RETI-EBT-Course-List.pdf\")",
+      "Bash(python3 -c ' *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ]
   }
 }

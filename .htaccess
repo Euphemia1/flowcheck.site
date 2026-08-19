@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Serve real files in public_html directly (e.g. test.php, robots.txt)
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+
+    # Serve static assets that exist inside public/ (CSS, JS, images)
+    RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -f
+    RewriteRule ^(.*)$ public/$1 [L]
+
+    # Everything else goes through Laravel's front controller
+    RewriteRule ^ index.php [L]
+</IfModule>

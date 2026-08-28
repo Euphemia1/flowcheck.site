@@ -9,6 +9,7 @@
         @endcan
     </div>
 
+    
     <div class="bg-white rounded-lg border border-gray-200 shadow-sm">
         <table class="w-full text-left">
             <thead class="bg-gray-50">

@@ -6,11 +6,11 @@
     <title>FlowCheck — Workflow & Operations Platform for Procurement, Logistics & Supply Chain</title>
     <meta name="description" content="One platform for requests, approvals, procurement, logistics, expediting, and operations — built for supply chain, freight, transport and mining-scale organisations.">
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.bunny.net/css?family=space-grotesk:400,500,600,700&display=swap" rel="stylesheet"/>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         * { box-sizing: border-box; }
-        body { background:#fff; color:#0f172a; font-family:'Plus Jakarta Sans',sans-serif; margin:0; }
+        body { background:#fff; color:#0f172a; font-family:'Space Grotesk',sans-serif; margin:0; }
 
         /* ── Nav ── */
         .nav-wrap { position:fixed; top:0; left:0; right:0; z-index:50; background:#fff; border-bottom:1px solid #e2e8f0; }
@@ -341,7 +341,7 @@
         .hamburger { display:none; background:none; border:none; cursor:pointer; padding:8px; border-radius:8px; align-items:center; justify-content:center; transition:background .15s; }
         .hamburger:hover { background:#f1f5f9; }
         /* Mobile dropdown */
-        .mobile-menu { display:none; position:fixed; top:64px; left:0; right:0; background:#fff; border-bottom:2px solid #e2e8f0; z-index:49; padding:12px 16px 20px; box-shadow:0 8px 24px rgba(0,0,0,.08); }
+        .mobile-menu { position:fixed; top:64px; left:0; right:0; background:#fff; border-bottom:2px solid #e2e8f0; z-index:49; padding:12px 16px 20px; box-shadow:0 8px 24px rgba(0,0,0,.08); }
         .mobile-menu a { display:block; padding:13px 12px; font-size:15px; font-weight:600; color:#334155; text-decoration:none; border-radius:10px; transition:background .15s; }
         .mobile-menu a:hover { background:#f1f5f9; color:#0f172a; }
         .mobile-menu-divider { height:1px; background:#f1f5f9; margin:8px 0; }

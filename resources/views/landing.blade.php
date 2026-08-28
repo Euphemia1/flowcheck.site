@@ -361,7 +361,7 @@
             <span class="logo-text">FlowCheck</span>
         </div>
         <div class="nav-links">
-            @foreach([['Product',true],['Solutions',true],['Resources',true],['About Us',false],['Pricing',false]] as [$l,$a])
+            @foreach([['Product',true],['Solutions',true],['Resources',true],['About Us',false]] as [$l,$a])
             <a href="#" class="nav-link">
                 {{ $l }}
                 @if($a)<svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color:#94a3b8"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>@endif
@@ -381,7 +381,7 @@
 </nav>
 {{-- Mobile dropdown menu --}}
 <div class="mobile-menu" x-show="open" @click.outside="open = false" x-transition style="display:none">
-    @foreach(['Features','How It Works','Impact','About Us','Pricing'] as $item)
+    @foreach(['Features','How It Works','Impact','About Us'] as $item)
     <a href="#{{ strtolower(str_replace(' ','-',$item)) }}">{{ $item }}</a>
     @endforeach
     <div class="mobile-menu-divider"></div>

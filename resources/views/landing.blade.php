@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlowCheck — Procurement Management for SMEs & Institutions</title>
-    <meta name="description" content="Replace spreadsheets, WhatsApp approvals, and email chains with a structured procurement workflow that gives finance complete visibility.">
+    <title>FlowCheck — Workflow & Operations Platform for Procurement, Logistics & Supply Chain</title>
+    <meta name="description" content="One platform for requests, approvals, procurement, logistics, expediting, and operations — built for supply chain, freight, transport and mining-scale organisations.">
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700,800,900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" rel="stylesheet"/>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         * { box-sizing: border-box; }
-        body { background:#fff; color:#0f172a; font-family:'Figtree',sans-serif; margin:0; }
+        body { background:#fff; color:#0f172a; font-family:'Plus Jakarta Sans',sans-serif; margin:0; }
 
         /* ── Nav ── */
         .nav-wrap { position:fixed; top:0; left:0; right:0; z-index:50; background:#fff; border-bottom:1px solid #e2e8f0; }
@@ -249,6 +249,50 @@
         .footer-legal a { font-size:13px; color:#94a3b8; text-decoration:none; transition:color .15s; }
         .footer-legal a:hover { color:#cbd5e1; }
 
+        /* ── Problem grid (4-up) ── */
+        .problem-grid-4 { grid-template-columns:repeat(4,1fr); }
+
+        /* ── Workflow compare diagram ── */
+        .workflow-compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:stretch; }
+        .workflow-panel { border-radius:18px; border:1px solid; padding:28px 24px 24px; display:flex; flex-direction:column; }
+        .workflow-panel-bad { background:#fef2f2; border-color:#fecaca; }
+        .workflow-panel-good { background:#f0fdf4; border-color:#bbf7d0; }
+        .workflow-panel-header { display:block; width:fit-content; margin:0 auto 24px; font-size:12px; font-weight:700; padding:6px 16px; border-radius:20px; }
+        .workflow-header-bad { background:#fee2e2; color:#dc2626; }
+        .workflow-header-good { background:#dcfce7; color:#16a34a; }
+        .workflow-row { display:flex; align-items:flex-start; justify-content:center; gap:6px; flex-wrap:wrap; }
+        .workflow-row-single { flex-wrap:wrap; }
+        .workflow-node { display:flex; flex-direction:column; align-items:center; gap:6px; width:76px; flex-shrink:0; }
+        .workflow-node-icon { width:40px; height:40px; border-radius:50%; background:#fff; border:1.5px solid; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .workflow-node-bad { border-color:#fca5a5; color:#dc2626; }
+        .workflow-node-good { border-color:#86efac; color:#16a34a; }
+        .workflow-node-label { font-size:10.5px; font-weight:600; color:#334155; text-align:center; line-height:1.3; }
+        .workflow-chevron { color:#cbd5e1; font-size:16px; font-weight:700; margin-top:12px; flex-shrink:0; }
+        .workflow-converge { display:flex; flex-direction:column; align-items:center; gap:4px; margin-top:14px; }
+        .workflow-arrow-down { color:#dc2626; font-size:16px; font-weight:700; }
+        .workflow-footer-note { text-align:center; font-size:12.5px; font-weight:600; margin:auto 0 0; padding-top:16px; margin-top:20px; border-top:1px dashed; }
+        .workflow-footer-bad { color:#dc2626; border-color:#fecaca; }
+        .workflow-footer-good { color:#16a34a; border-color:#bbf7d0; }
+
+        /* ── Module grid ── */
+        .module-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+        .capability-card { background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:22px; }
+        .capability-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
+        .capability-title { font-size:15px; font-weight:700; color:#0f172a; margin:0 0 6px; }
+        .capability-desc { font-size:13px; color:#64748b; line-height:1.6; margin:0; }
+        .module-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; }
+        .module-tag { font-size:11px; font-weight:600; padding:4px 10px; border-radius:20px; background:#f1f5f9; color:#475569; }
+        .module-note { text-align:center; font-size:14px; color:#64748b; margin:32px 0 0; }
+        .module-note strong { color:#0f172a; }
+
+        /* ── Management overview panel ── */
+        .mgmt-card { background:#fff; border-radius:20px; border:1px solid #e2e8f0; padding:20px; box-shadow:0 24px 80px rgba(15,23,42,.1), 0 4px 16px rgba(15,23,42,.06); }
+        .mgmt-card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+        .mgmt-card-title { font-size:14px; font-weight:700; color:#0f172a; }
+        .mgmt-card-period { font-size:12px; color:#94a3b8; }
+        .mgmt-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+        .mgmt-stat { background:#f8fafc; border:1px solid #f1f5f9; border-radius:10px; padding:12px; }
+
         /* Responsive */
         @media (max-width:1024px) {
             .hero-grid, .solution-grid { grid-template-columns:1fr; }
@@ -256,6 +300,10 @@
             .how-connector { display:none; }
             .feat-cols-grid { grid-template-columns:repeat(2,1fr); }
             .footer-grid { grid-template-columns:1fr 1fr; }
+            .problem-grid-4 { grid-template-columns:repeat(2,1fr); }
+            .workflow-compare-grid { grid-template-columns:1fr; }
+            .module-grid { grid-template-columns:repeat(2,1fr); }
+            .mgmt-grid { grid-template-columns:repeat(3,1fr); }
         }
         @media (max-width:768px) {
             .hero-h1 { font-size:34px; letter-spacing:-0.8px; }
@@ -274,6 +322,10 @@
             .feat-cols-grid { grid-template-columns:1fr; }
             .how-grid { grid-template-columns:repeat(2,1fr); gap:20px; }
             .footer-grid { grid-template-columns:1fr; gap:28px; }
+            .module-grid { grid-template-columns:1fr; }
+            .mgmt-grid { grid-template-columns:repeat(2,1fr); }
+            .workflow-node { width:64px; }
+            .workflow-chevron { display:none; }
             .nav-links { display:none; }
             .hamburger { display:flex !important; }
             .btn-login { display:none; }
@@ -283,8 +335,7 @@
             .dash-sidebar { width:100px; }
             .dash-stat-val { font-size:11px; }
             .dash-chart { padding:8px; }
-            /* Mobile menu */
-            .mobile-menu { display:block !important; }
+            /* Mobile menu: visibility stays controlled by Alpine's x-show="open" */
         }
         /* Hamburger hidden by default */
         .hamburger { display:none; background:none; border:none; cursor:pointer; padding:8px; border-radius:8px; align-items:center; justify-content:center; transition:background .15s; }
@@ -310,7 +361,7 @@
             <span class="logo-text">FlowCheck</span>
         </div>
         <div class="nav-links">
-            @foreach([['Product',true],['Solutions',true],['Resources',true],['About Us',false]] as [$l,$a])
+            @foreach([['Product',true],['Solutions',true],['Resources',true],['About Us',false],['Pricing',false]] as [$l,$a])
             <a href="#" class="nav-link">
                 {{ $l }}
                 @if($a)<svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color:#94a3b8"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>@endif
@@ -330,7 +381,7 @@
 </nav>
 {{-- Mobile dropdown menu --}}
 <div class="mobile-menu" x-show="open" @click.outside="open = false" x-transition style="display:none">
-    @foreach(['Features','How It Works','Impact','About Us'] as $item)
+    @foreach(['Features','How It Works','Impact','About Us','Pricing'] as $item)
     <a href="#{{ strtolower(str_replace(' ','-',$item)) }}">{{ $item }}</a>
     @endforeach
     <div class="mobile-menu-divider"></div>
@@ -344,11 +395,11 @@
     <div class="section-inner">
         <div class="hero-grid">
             <div>
-                <h1 class="hero-h1">Take control of<br>every purchase<br>request.</h1>
-                <p class="hero-sub">Replace spreadsheets, WhatsApp approvals, and email chains with a structured procurement workflow that gives finance complete visibility.</p>
+                <h1 class="hero-h1">Operations,<br><span style="color:#2563eb">under control.</span></h1>
+                <p class="hero-sub">One workflow platform for requests, approvals, procurement, logistics, expediting and operations — built for supply chain, freight, transport and mining-scale organisations.</p>
                 <div class="hero-btns">
                     <a href="{{ route('login') }}" class="btn-primary-lg">Start Free Trial</a>
-                    <a href="#how-it-works" class="btn-outline-lg">Book a Demo</a>
+                    <a href="#how-it-works" class="btn-outline-lg">See How It Works</a>
                 </div>
                 <div class="trust-checks">
                     @foreach(['No credit card required','Easy setup','Cancel anytime'] as $t)
@@ -383,11 +434,12 @@
                             @foreach([
                                 ['Requests','M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2'],
                                 ['Approvals','M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'],
-                                ['Vendors','M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z'],
-                                ['Purch. Orders','M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
-                                ['Invoices','M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z'],
+                                ['Procurement','M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z'],
+                                ['Logistics','M3 16V8a1 1 0 011-1h9v9H4a1 1 0 01-1-1zm10-6h3.5l3.5 3.5V16h-7v-6zM7 19a2 2 0 100-4 2 2 0 000 4zm10 0a2 2 0 100-4 2 2 0 000 4z'],
+                                ['Expediting','M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'],
+                                ['Operations','M13 10V3L4 14h7v7l9-11h-7z'],
                                 ['Reports','M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
-                                ['Settings','M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z'],
+                                ['Admin','M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z'],
                             ] as [$name,$path])
                             <div class="dash-sidebar-item">
                                 <svg width="12" height="12" fill="none" stroke="#94a3b8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="{{ $path }}"/></svg>
@@ -398,7 +450,7 @@
                         <div class="dash-main">
                             <div class="dash-main-title">Dashboard</div>
                             <div class="dash-stats">
-                                @foreach([['Total Requests','128','+12% this month',true],['Pending Approvals','34','+45% this month',false],['Approved','94','+10% this month',true],['Total Spend','$256,430','+40% this month',true]] as [$l,$v,$c,$pos])
+                                @foreach([['Open Requests','18','+5 new today',true],['Pending Approvals','9','+2 require action',false],['Active Shipments','24','↑ 6 in transit',true],['Total Spend','$312,480','↑ This month',true]] as [$l,$v,$c,$pos])
                                 <div class="dash-stat">
                                     <div class="dash-stat-label">{{ $l }}</div>
                                     <div class="dash-stat-val">{{ $v }}</div>
@@ -408,13 +460,13 @@
                             </div>
                             <div class="dash-charts">
                                 <div class="dash-chart">
-                                    <div class="dash-chart-title">Request Status</div>
+                                    <div class="dash-chart-title">Workflow Status</div>
                                     <div class="donut-wrap">
-                                        <div class="donut"></div>
+                                        <div class="donut" style="background:conic-gradient(#2563eb 0deg 221deg,#f59e0b 221deg 332deg,#ef4444 332deg 360deg)"></div>
                                         <div class="donut-legend">
-                                            <div class="donut-row"><span class="donut-dot" style="background:#2563eb"></span>Approved 94</div>
-                                            <div class="donut-row"><span class="donut-dot" style="background:#f59e0b"></span>Pending 34</div>
-                                            <div class="donut-row"><span class="donut-dot" style="background:#ef4444"></span>Rejected 12</div>
+                                            <div class="donut-row"><span class="donut-dot" style="background:#2563eb"></span>Completed 24</div>
+                                            <div class="donut-row"><span class="donut-dot" style="background:#f59e0b"></span>In Progress 12</div>
+                                            <div class="donut-row"><span class="donut-dot" style="background:#ef4444"></span>Delayed 3</div>
                                         </div>
                                     </div>
                                 </div>
@@ -436,30 +488,16 @@
     </div>
 </section>
 
-{{-- ── Trust Bar ── --}}
-<div class="trust-bar">
-    <div class="section-inner">
-        <p class="trust-bar-label">Trusted by procurement teams at</p>
-        <div class="trust-logos">
-            @foreach([['UNICEF','M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'],['Save the Children','M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'],['World Vision','M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z'],['PLAN International','M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z'],['IRC','M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'],['CARE','M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'],['OXFAM','M21 12a9 9 0 11-18 0 9 9 0 0118 0z']] as [$name,$icon])
-            <a href="#" class="trust-logo-item">
-                <svg width="16" height="16" fill="none" stroke="#1e293b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="{{ $icon }}"/></svg>
-                <span class="trust-logo-name">{{ $name }}</span>
-            </a>
-            @endforeach
-        </div>
-    </div>
-</div>
-
 {{-- ── Problem ── --}}
 <section class="section" id="features">
     <div class="section-inner">
-        <h2 class="section-title" style="text-align:center;margin-bottom:48px">Procurement breaks down when processes live everywhere.</h2>
-        <div class="problem-grid">
+        <h2 class="section-title" style="text-align:center;margin-bottom:48px">Your operation runs across four different<br>tools — and none of them talk to each other.</h2>
+        <div class="problem-grid problem-grid-4">
             @foreach([
-                ['No Visibility','Requests disappear in chats and inboxes.','M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z','#fef2f2','#dc2626'],
-                ['No Control','Budgets are exceeded before finance can intervene.','M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z','#fff7ed','#ea580c'],
-                ['No Accountability','No clear record of who approved what.','M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z','#fefce8','#ca8a04'],
+                ['Requests & Approvals','Requests come through email, WhatsApp, paper or conversations, with no clear record of who needs to act.','M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z','#eff6ff','#2563eb'],
+                ['Procurement','Quotes, vendor information and purchase orders are scattered across spreadsheets, email and paper files.','M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z','#f5f3ff','#7c3aed'],
+                ['Logistics','Shipments, transport and deliveries are tracked by phone calls and radio, with no visibility until something goes wrong.','M3 16V8a1 1 0 011-1h9v9H4a1 1 0 01-1-1zm10-6h3.5l3.5 3.5V16h-7v-6zM7 19a2 2 0 100-4 2 2 0 000 4zm10 0a2 2 0 100-4 2 2 0 000 4z','#fff7ed','#ea580c'],
+                ['Expediting & Operations','Delayed orders, fuel, assets and maintenance are managed separately, so nothing gets flagged until it becomes urgent.','M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z','#fefce8','#ca8a04'],
             ] as [$title,$desc,$icon,$bg,$color])
             <div class="problem-item">
                 <div class="problem-icon" style="background:{{ $bg }}">
@@ -473,65 +511,74 @@
     </div>
 </section>
 
-{{-- ── Solution ── --}}
-<section class="section solution-section">
+{{-- ── Current Process vs FlowCheck ── --}}
+<section class="section" style="background:#f8fafc">
     <div class="section-inner">
-        <div class="solution-grid">
-            <div>
-                <div class="pr-card">
-                    <div class="pr-breadcrumb"><span class="pr-back">← Back to requests</span></div>
-                    <div class="pr-body">
-                        <div class="pr-header">
-                            <div>
-                                <p class="pr-title">Purchase Request #PR-2024-1024</p>
-                                <div class="pr-meta">
-                                    <div class="pr-avatar">JC</div>
-                                    <span class="pr-meta-text">Jane Cooper</span>
-                                    <span style="color:#cbd5e1;font-size:12px">·</span>
-                                    <span class="pr-meta-text">Marketing Department</span>
-                                </div>
-                            </div>
-                            <span class="pr-badge-orange">⚡ Pending Approval</span>
-                        </div>
-                        <div class="pr-amounts">
-                            <div><div class="pr-amount-label">Amount</div><div class="pr-amount-val">$2,450.00 <span style="font-size:11px;color:#94a3b8;font-weight:400">USD</span></div></div>
-                            <div><div class="pr-amount-label">Date</div><div class="pr-amount-val" style="font-size:13px">May 15, 2024</div></div>
-                        </div>
-                        <div class="pr-tabs">
-                            <button class="pr-tab active">Details</button>
-                            <button class="pr-tab">Items (3)</button>
-                            <button class="pr-tab">Approvals</button>
-                            <button class="pr-tab">History</button>
-                        </div>
-                        <p class="approval-section-label">Approval Workflow</p>
-                        @foreach([['1','Department Manager','Robert Fox','green'],['2','Finance Manager','Leslie Alexander','amber'],['3','Procurement Head','Gary','gray']] as [$n,$role,$name,$s])
-                        <div class="approval-row">
-                            <div class="approval-num">{{ $n }}</div>
-                            <div class="approval-info"><div class="approval-role">{{ $role }}</div><div class="approval-name">{{ $name }}</div></div>
-                            @if($s==='green')<span class="badge-green">Approved</span>
-                            @elseif($s==='amber')<span class="badge-amber">Pending</span>
-                            @else<span class="badge-gray">Waiting</span>@endif
-                        </div>
-                        @endforeach
+        <h2 class="section-title" style="text-align:center;margin-bottom:48px">From scattered operations to<br>one controlled workflow.</h2>
+        <div class="workflow-compare-grid">
+            <div class="workflow-panel workflow-panel-bad">
+                <span class="workflow-panel-header workflow-header-bad">Current Process</span>
+                <div class="workflow-row">
+                    @foreach([
+                        ['WhatsApp','M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z'],
+                        ['Spreadsheet','M4 4h16v16H4V4zm0 5.333h16M4 14.667h16M9.333 4v16M14.667 4v16'],
+                        ['Email','M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'],
+                        ['Manager Approval','M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'],
+                    ] as [$label,$icon])
+                    <div class="workflow-node">
+                        <div class="workflow-node-icon workflow-node-bad"><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="{{ $icon }}"/></svg></div>
+                        <span class="workflow-node-label">{{ $label }}</span>
                     </div>
-                </div>
-            </div>
-            <div>
-                <h2 class="solution-title">One workflow<br>from request<br>to payment.</h2>
-                <div class="feature-check-grid">
-                    @foreach(['Purchase Requests','Purchase Orders','Approval Routing','Invoice Matching','Vendor Sourcing','Reporting'] as $feat)
-                    <div class="feature-check">
-                        <div class="feature-check-icon">
-                            <svg width="10" height="10" fill="#2563eb" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                        </div>
-                        {{ $feat }}
-                    </div>
+                    @if(!$loop->last)<span class="workflow-chevron">›</span>@endif
                     @endforeach
                 </div>
-                <a href="{{ route('login') }}" class="btn-primary-lg" style="display:inline-flex;align-items:center;gap:8px">
-                    See the Platform
-                    <svg width="14" height="14" fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                </a>
+                <div class="workflow-row" style="margin-top:24px">
+                    @foreach([
+                        ['Supplier Quotation','M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
+                        ['Purchase Order','M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
+                        ['Delivery','M3 16V8a1 1 0 011-1h9v9H4a1 1 0 01-1-1zm10-6h3.5l3.5 3.5V16h-7v-6zM7 19a2 2 0 100-4 2 2 0 000 4zm10 0a2 2 0 100-4 2 2 0 000 4z'],
+                        ['Invoice','M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z'],
+                    ] as [$label,$icon])
+                    <div class="workflow-node">
+                        <div class="workflow-node-icon workflow-node-bad"><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="{{ $icon }}"/></svg></div>
+                        <span class="workflow-node-label">{{ $label }}</span>
+                    </div>
+                    @if(!$loop->last)<span class="workflow-chevron">›</span>@endif
+                    @endforeach
+                </div>
+                <div class="workflow-converge">
+                    <span class="workflow-arrow-down">↓</span>
+                    <div class="workflow-node">
+                        <div class="workflow-node-icon workflow-node-bad"><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 21h16M5 10h1M9 10h1M14 10h1M18 10h1M4 10l8-6 8 6M6 10v8M10 10v8M14 10v8M18 10v8"/></svg></div>
+                        <span class="workflow-node-label">Head Office</span>
+                    </div>
+                </div>
+                <p class="workflow-footer-note workflow-footer-bad">Hard to track. Easy to lose. No clear visibility.</p>
+            </div>
+
+            <div class="workflow-panel workflow-panel-good">
+                <span class="workflow-panel-header workflow-header-good">With FlowCheck</span>
+                <div class="workflow-row workflow-row-single">
+                    @foreach([
+                        ['Request','M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2'],
+                        ['Approval','M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'],
+                        ['Procurement','M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z'],
+                        ['Purchase Order','M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
+                        ['Logistics','M3 16V8a1 1 0 011-1h9v9H4a1 1 0 01-1-1zm10-6h3.5l3.5 3.5V16h-7v-6zM7 19a2 2 0 100-4 2 2 0 000 4zm10 0a2 2 0 100-4 2 2 0 000 4z'],
+                        ['Delivery','M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z'],
+                        ['Reporting','M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
+                    ] as [$label,$icon])
+                    <div class="workflow-node">
+                        <div class="workflow-node-icon workflow-node-good"><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="{{ $icon }}"/></svg></div>
+                        <span class="workflow-node-label">{{ $label }}</span>
+                    </div>
+                    @if(!$loop->last)<span class="workflow-chevron">›</span>@endif
+                    @endforeach
+                </div>
+                <p class="workflow-footer-note workflow-footer-good">
+                    <svg width="14" height="14" fill="none" stroke="#16a34a" viewBox="0 0 24 24" style="vertical-align:-2px;margin-right:4px"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                    Every purchase has a clear status, owner and history from request to payment.
+                </p>
             </div>
         </div>
     </div>
@@ -540,16 +587,16 @@
 {{-- ── How It Works ── --}}
 <section class="section" style="background:#fff" id="how-it-works">
     <div class="section-inner">
-        <h2 class="section-title" style="text-align:center;margin-bottom:48px">How FlowCheck works</h2>
+        <h2 class="section-title" style="text-align:center;margin-bottom:48px">One workflow from request to delivery.</h2>
         <div class="how-grid">
             <div class="how-connector"></div>
             @foreach([
-                ['1','Request','Employees submit requests.','M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2'],
-                ['2','Review','Approvers are notified automatically.','M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'],
-                ['3','Vendor Selection','Collect and compare quotes.','M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z'],
-                ['4','Purchase Order','Generate approved POs.','M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
-                ['5','Invoice Matching','Verify spending against approvals.','M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z'],
-                ['6','Reporting','Track budgets and spending.','M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
+                ['1','Request','Employee or site submits a request.','M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2'],
+                ['2','Approval','The request automatically moves through the required approval levels.','M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'],
+                ['3','Procurement','Procurement sources, quotes and selects a vendor.','M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z'],
+                ['4','Purchase Order','An approved request becomes a purchase order.','M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
+                ['5','Logistics & Delivery','Shipments and transport are tracked through to proof of delivery.','M3 16V8a1 1 0 011-1h9v9H4a1 1 0 01-1-1zm10-6h3.5l3.5 3.5V16h-7v-6zM7 19a2 2 0 100-4 2 2 0 000 4zm10 0a2 2 0 100-4 2 2 0 000 4z'],
+                ['6','Reporting','Management sees spending, activity, delays and outstanding actions.','M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
             ] as [$num,$title,$desc,$icon])
             <div class="how-step">
                 <div class="how-step-icon">
@@ -576,137 +623,128 @@
     </div>
 </div>
 
-{{-- ── Everything You Need ── --}}
+{{-- ── Platform Modules ── --}}
 <section class="section" style="background:#fff">
     <div class="section-inner">
-        <h2 class="section-title" style="text-align:center;margin-bottom:48px">Everything you need in one platform</h2>
-        <div class="feat-cols-grid">
-            @php
-            $featCols = [
-                ['Governance & Control','M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',['Approval Workflows','Budget Controls','Audit Trail','Role Permissions'],'#dbeafe','#1d4ed8','#1d4ed8'],
-                ['Purchasing','M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z',['Purchase Requests','RFQs','Purchase Orders','Invoice Matching'],'#dcfce7','#16a34a','#16a34a'],
-                ['Vendor Management','M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z',['Vendor Database','Performance Tracking','Document Storage'],'#ede9fe','#7c3aed','#7c3aed'],
-                ['Reporting & Analytics','M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',['Spend Analytics','Department Reports','Exportable Data'],'#fef3c7','#d97706','#d97706'],
-            ];
-            @endphp
-            @foreach($featCols as [$colTitle,$colIcon,$items,$iconBg,$iconColor,$dotColor])
-            <div>
-                <div class="feat-col-header">
-                    <div class="feat-col-icon" style="background:{{ $iconBg }}">
-                        <svg width="18" height="18" fill="none" stroke="{{ $iconColor }}" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="{{ $colIcon }}"/></svg>
-                    </div>
-                    <span class="feat-col-name">{{ $colTitle }}</span>
+        <h2 class="section-title" style="text-align:center;margin-bottom:48px">One platform, built around<br>how your operation actually runs.</h2>
+        <div class="module-grid">
+            @foreach([
+                ['Workflows','Every request, approval, task and exception in one auditable trail — no more chasing status across email and chat.',['Requests','Approvals','Tasks','Exceptions'],'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2','#dbeafe','#1d4ed8'],
+                ['Procurement','From purchase request to RFQ, vendor selection, purchase order and invoice — fully tracked end to end.',['Purchase Requests','RFQs','Vendors','Purchase Orders','Invoices'],'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z','#ede9fe','#7c3aed'],
+                ['Logistics','Track shipments, deliveries and transport in real time, with proof of delivery captured at the point of handover.',['Shipments','Deliveries','Transport','Proof of Delivery'],'M3 16V8a1 1 0 011-1h9v9H4a1 1 0 01-1-1zm10-6h3.5l3.5 3.5V16h-7v-6zM7 19a2 2 0 100-4 2 2 0 000 4zm10 0a2 2 0 100-4 2 2 0 000 4z','#dcfce7','#16a34a'],
+                ['Expediting','Surface open and delayed orders automatically, so nothing slips through without a follow-up or escalation.',['Open Orders','Supplier Follow-ups','Delayed Orders','Escalations'],'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z','#fff7ed','#ea580c'],
+                ['Operations','Manage fuel, assets, maintenance and operational spend alongside the workflows that depend on them.',['Fuel','Assets','Maintenance','Operational Expenses'],'M13 10V3L4 14h7v7l9-11h-7z','#fef3c7','#d97706'],
+                ['Reporting','Real-time visibility into spend, supplier and delivery performance, and a complete audit trail for every action.',['Spend','Supplier Performance','Delivery Performance','Workflow Performance','Audit Trail'],'M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z','#fefce8','#ca8a04'],
+            ] as [$title,$desc,$tags,$icon,$bg,$color])
+            <div class="capability-card">
+                <div class="capability-icon" style="background:{{ $bg }}">
+                    <svg width="20" height="20" fill="none" stroke="{{ $color }}" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="{{ $icon }}"/></svg>
                 </div>
-                <ul class="feat-list">
-                    @foreach($items as $item)
-                    <li>
-                        <span class="feat-dot" style="background:{{ $dotColor }}"></span>
-                        {{ $item }}
-                    </li>
+                <h3 class="capability-title">{{ $title }}</h3>
+                <p class="capability-desc">{{ $desc }}</p>
+                <div class="module-tags">
+                    @foreach($tags as $tag)
+                    <span class="module-tag">{{ $tag }}</span>
                     @endforeach
-                </ul>
+                </div>
             </div>
             @endforeach
         </div>
+        <p class="module-note">Plus <strong>Administration</strong> — Users, Roles, Departments, Approval Rules and Integrations — to configure it all your way.</p>
     </div>
 </section>
 
-{{-- ── Feature Spotlights ── --}}
-<section class="section" style="background:#f8fafc">
+{{-- ── What Happens When Someone Needs To Buy Something ── --}}
+<section class="section solution-section">
     <div class="section-inner">
-        <h2 class="section-title" style="text-align:center;margin-bottom:48px">Powerful features. Simple experience.</h2>
-        <div class="spotlight-grid">
-
-            {{-- Approval Workflows --}}
-            <div class="spotlight-card">
-                <div class="spotlight-preview">
-                    <div class="mini-card">
-                        <div class="mini-label">Approval Workflow</div>
-                        @foreach([['Robert Fox','Department Manager','RF','#dbeafe','#1d4ed8','green'],['Leslie Alexander','Finance Manager','LA','#ede9fe','#7c3aed','amber']] as [$name,$role,$init,$bg,$color,$s])
-                        <div class="mini-approval">
-                            <div class="mini-avatar" style="background:{{ $bg }};color:{{ $color }}">{{ $init }}</div>
-                            <div class="mini-info"><div class="mini-role">{{ $role }}</div><div class="mini-name">{{ $name }}</div></div>
-                            @if($s==='green')<span class="mini-badge" style="background:#f0fdf4;color:#16a34a">Approved</span>
-                            @else<span class="mini-badge" style="background:#fffbeb;color:#d97706">Pending</span>@endif
+        <div class="solution-grid">
+            <div>
+                <div class="pr-card">
+                    <div class="pr-breadcrumb"><span class="pr-back">← Back to requests</span></div>
+                    <div class="pr-body">
+                        <div class="pr-header">
+                            <div>
+                                <p class="pr-title">Purchase Request #PR-2024-0156</p>
+                                <div class="pr-meta">
+                                    <div class="pr-avatar">JC</div>
+                                    <span class="pr-meta-text">Jane Cooper</span>
+                                    <span style="color:#cbd5e1;font-size:12px">·</span>
+                                    <span class="pr-meta-text">Marketing Department</span>
+                                </div>
+                            </div>
+                            <span class="pr-badge-orange">⚡ Pending Approval</span>
+                        </div>
+                        <div class="pr-amounts">
+                            <div><div class="pr-amount-label">Request</div><div class="pr-amount-val" style="font-size:13px">50 promotional banners</div></div>
+                            <div><div class="pr-amount-label">Estimated Cost</div><div class="pr-amount-val">$2,450.00</div></div>
+                        </div>
+                        <div class="pr-tabs">
+                            <button class="pr-tab active">Details</button>
+                            <button class="pr-tab">Items (3)</button>
+                            <button class="pr-tab">Approvals</button>
+                            <button class="pr-tab">History</button>
+                        </div>
+                        <p class="approval-section-label">Approval Workflow</p>
+                        @foreach([['1','Submitted by Employee','May 15, 9:10 AM','green'],['2','Manager Review','May 15, 10:20 AM','green'],['3','Procurement Requesting Quotes','May 16, 8:15 AM','amber'],['4','Supplier Selected','May 17, 2:30 PM','gray'],['5','Purchase Order Created','May 17, 3:45 PM','gray'],['6','Goods Received','May 24, 11:30 AM','gray'],['7','Invoice Matched','May 25, 9:00 AM','gray']] as [$n,$role,$name,$s])
+                        <div class="approval-row">
+                            <div class="approval-num">{{ $n }}</div>
+                            <div class="approval-info"><div class="approval-role">{{ $role }}</div><div class="approval-name">{{ $name }}</div></div>
+                            @if($s==='green')<span class="badge-green">✓</span>
+                            @elseif($s==='amber')<span class="badge-amber">Pending</span>
+                            @else<span class="badge-gray">Waiting</span>@endif
                         </div>
                         @endforeach
-                        <div class="mini-progress">
-                            <div class="mini-prog-bar" style="background:#2563eb"></div>
-                            <div class="mini-prog-bar" style="background:#fbbf24"></div>
-                            <div class="mini-prog-bar" style="background:#e2e8f0"></div>
-                        </div>
                     </div>
-                </div>
-                <div class="spotlight-label">
-                    <h3 class="spotlight-title">Approval Workflows</h3>
-                    <p class="spotlight-desc">Route requests automatically through your org structure.</p>
                 </div>
             </div>
-
-            {{-- Budget Controls --}}
-            <div class="spotlight-card">
-                <div class="spotlight-preview">
-                    <div class="mini-card">
-                        <div class="budget-dept">Marketing Department</div>
-                        <div class="budget-row">
-                            <div><div class="budget-total">$25,000.00</div><div class="budget-total-label">Total Budget</div></div>
-                            <div><div class="budget-spent">$19,750.00</div><div class="budget-spent-label">Spent</div></div>
+            <div>
+                <h2 class="solution-title">See a workflow<br>in action.</h2>
+                <p class="section-sub" style="margin-bottom:28px;max-width:440px">Whether it's a purchase request, a shipment or a maintenance job, every request gets the same clear, trackable journey.</p>
+                <div class="feature-check-grid">
+                    @foreach(['Clear status at every step','No chasing or follow-ups','Complete audit trail','No duplicated data entry','Works across procurement, logistics and operations','Faster from request to completion'] as $feat)
+                    <div class="feature-check">
+                        <div class="feature-check-icon">
+                            <svg width="10" height="10" fill="#2563eb" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                         </div>
-                        <div class="budget-bar-bg"><div class="budget-bar-fill" style="width:79%"></div></div>
-                        <div class="budget-pct">79%</div>
+                        {{ $feat }}
                     </div>
-                </div>
-                <div class="spotlight-label">
-                    <h3 class="spotlight-title">Budget Controls</h3>
-                    <p class="spotlight-desc">Prevent unauthorized spending before it happens.</p>
-                </div>
-            </div>
-
-            {{-- Spend Analytics --}}
-            <div class="spotlight-card">
-                <div class="spotlight-preview">
-                    <div class="mini-card">
-                        <div style="font-size:10px;font-weight:600;color:#64748b;margin-bottom:2px">Total Spend</div>
-                        <div class="analytics-total">$256,430</div>
-                        <div class="analytics-chg">↑ 10% vs last month</div>
-                        <div class="bar-chart">
-                            @foreach([30,45,35,60,50,75,65,80,55,70,85,90] as $h)
-                            <div class="bar-item" style="height:{{ $h }}%;background:{{ $loop->index > 8 ? '#2563eb' : '#bfdbfe' }};border-radius:2px 2px 0 0"></div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-                <div class="spotlight-label">
-                    <h3 class="spotlight-title">Spend Analytics</h3>
-                    <p class="spotlight-desc">Understand spending patterns across your organisation.</p>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-{{-- ── Testimonials ── --}}
-<section class="section" style="background:#fff">
+{{-- ── Know What Is Happening With Your Money ── --}}
+<section class="section" style="background:#f8fafc">
     <div class="section-inner">
-        <h2 class="section-title" style="text-align:center;margin-bottom:48px">Loved by procurement teams</h2>
-        <div class="testimonial-grid">
-            @foreach([
-                ['"FlowCheck reduced our approval time from 5 days to less than 24 hours."','Operations Manager','NGO Organization','OM','#2563eb','c-blue'],
-                ['"We finally have complete visibility over our budgets and spending."','Finance Director','International School','FD','#7c3aed','c-violet'],
-                ['"The audit trail has made our compliance process smooth and stress-free."','Procurement Lead','Healthcare Nonprofit','PL','#059669','c-emerald'],
-            ] as [$q,$role,$org,$init,$avatarBg,$cls])
-            <div class="testimonial-card {{ $cls }}">
-                <div class="stars">@for($i=0;$i<5;$i++)<span class="star">★</span>@endfor</div>
-                <p class="testimonial-quote">{{ $q }}</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar" style="background:{{ $avatarBg }}">{{ $init }}</div>
-                    <div>
-                        <div class="author-name">{{ $role }}</div>
-                        <div class="author-org">{{ $org }}</div>
+        <div class="solution-grid" style="align-items:center">
+            <div>
+                <h2 class="solution-title" style="font-size:34px">Know what is happening<br>across your operation.</h2>
+                <p class="section-sub" style="margin-bottom:28px;max-width:440px">Management gets real-time visibility into requests, procurement, logistics and operational spend — without asking for another spreadsheet.</p>
+                <a href="#how-it-works" class="btn-outline-lg">See How It Works</a>
+            </div>
+            <div>
+                <div class="mgmt-card">
+                    <div class="mgmt-card-header">
+                        <span class="mgmt-card-title">Management Overview</span>
+                        <span class="mgmt-card-period">This Month ⌄</span>
+                    </div>
+                    <div class="mgmt-grid">
+                        @foreach([['Pending Requests','12','+4 new today',true],['Awaiting Approval','8','+3 require action',false],['Active Shipments','24','↑ 6 in transit',true],['Total Spend','$312,480','This month',null],['On-Time Deliveries','94%','↑ 3pts',true]] as [$l,$v,$c,$pos])
+                        <div class="mgmt-stat">
+                            <div class="dash-stat-label">{{ $l }}</div>
+                            <div class="dash-stat-val">{{ $v }}</div>
+                            @if(!is_null($pos))
+                            <div class="dash-stat-chg {{ $pos?'chg-green':'chg-red' }}">{{ $c }}</div>
+                            @else
+                            <div class="dash-stat-chg" style="color:#94a3b8">{{ $c }}</div>
+                            @endif
+                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
-            @endforeach
         </div>
     </div>
 </section>
@@ -720,12 +758,15 @@
         </div>
         <div class="faq-grid">
             @foreach([
-                ['How long does setup take?','Most teams are live within one working day. Our onboarding guides you through importing vendors, configuring workflows, and inviting your team — no IT support needed.'],
-                ['Do we need procurement expertise?','No. FlowCheck is designed for finance and operations teams. The interface is intuitive enough that any team member can raise a request on day one.'],
-                ['Can approvals match our organizational structure?','Yes. FlowCheck supports multi-level, role-based approval chains — configurable per department, cost centre, or spend threshold.'],
-                ['Can we integrate with existing systems?','FlowCheck connects with accounting tools and ERP systems. Our API is available on Professional and Enterprise plans.'],
-                ['Is our data secure?','Your data is encrypted in transit and at rest. Role-based access ensures users only see what they\'re permitted to see.'],
-                ['Can we upgrade or downgrade later?','Absolutely. Change your plan at any time from your organisation settings — no penalties or lock-in contracts.'],
+                ['How does FlowCheck handle approvals?','Requests are automatically routed through your organisation\'s approval chain — by department, budget threshold or role — so the right person is notified at the right time.'],
+                ['Can FlowCheck manage logistics and shipments as well as procurement?','Yes. Shipments, deliveries, transport and proof of delivery are tracked in the same workflow as procurement, so nothing lives in a separate system.'],
+                ['How does expediting work?','Open and delayed orders are surfaced automatically, with supplier follow-ups and escalations built into the workflow so nothing is missed.'],
+                ['Can we track fuel, assets and maintenance?','Yes. Operational costs like fuel, assets and maintenance are logged and reported alongside your procurement and logistics spend.'],
+                ['Can I create different approval workflows for different departments or sites?','Yes. Each department, site or cost centre can have its own multi-level approval chain, configured to match how your organisation actually works.'],
+                ['Can procurement manage supplier quotations and RFQs?','Procurement can issue RFQs, collect and compare supplier quotations, and convert the winning quote into a purchase order — all in one place.'],
+                ['Can finance match invoices against purchase orders and deliveries?','Yes. FlowCheck matches invoices against purchase orders and goods received, flagging any mismatches automatically.'],
+                ['Can management see spend and performance across the whole operation?','Management gets a real-time overview of requests, procurement, logistics, supplier and delivery performance — without waiting on a report.'],
+                ['Can FlowCheck work with our existing processes?','FlowCheck is configurable to your existing approval structure, workflows and integrations, so you don\'t need to change how your teams already work to get started.'],
             ] as $faq)
             <div class="faq-row" x-data="{ open: false }">
                 <button class="faq-btn" @click="open = !open">
@@ -744,8 +785,8 @@
 {{-- ── CTA Band ── --}}
 <section class="cta-section">
     <div class="section-inner">
-        <h2 class="cta-title">Bring order to procurement.</h2>
-        <p class="cta-sub">Stop managing purchases through spreadsheets and chat messages.</p>
+        <h2 class="cta-title">Bring procurement, logistics and<br>operations into one workflow.</h2>
+        <p class="cta-sub">Stop chasing requests, shipments, approvals and invoices across different systems and tools.</p>
         <div class="cta-btns">
             <a href="{{ route('login') }}" class="cta-btn-white">Start Free Trial</a>
             <a href="#" class="cta-btn-ghost">Book a Demo</a>
@@ -762,7 +803,7 @@
                     <div class="logo-box"><svg width="16" height="16" fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div>
                     <span style="font-size:17px;font-weight:800;color:#f1f5f9;letter-spacing:-.3px">FlowCheck</span>
                 </div>
-                <p class="footer-brand-desc">The modern procurement platform for control, visibility, and compliance.</p>
+                <p class="footer-brand-desc">The workflow and operations platform for procurement, logistics and supply chain teams.</p>
                 <div class="footer-socials">
                     <a href="#" class="footer-social">in</a>
                     <a href="#" class="footer-social">tw</a>
@@ -771,7 +812,7 @@
             </div>
             @foreach([
                 ['Product',['Features','Pricing','Integrations','Changelog']],
-                ['Solutions',['NGOs','Education','Healthcare','Manufacturing']],
+                ['Solutions',['Shipping & Freight','Mining & Resources','Supply Chain','Transport & Fleet']],
                 ['Resources',['Blog','Templates','Guides','Help Center']],
                 ['Company',['About Us','Careers','Contact','Privacy Policy']],
             ] as [$col,$links])

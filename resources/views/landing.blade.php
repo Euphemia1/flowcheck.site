@@ -305,6 +305,12 @@
             .module-grid { grid-template-columns:repeat(2,1fr); }
             .mgmt-grid { grid-template-columns:repeat(3,1fr); }
         }
+        @media (max-width:900px) {
+            .nav-links { display:none; }
+            .hamburger { display:flex !important; }
+            .btn-login { display:none; }
+            .btn-cta { padding:8px 14px; font-size:13px; }
+        }
         @media (max-width:768px) {
             .hero-h1 { font-size:34px; letter-spacing:-0.8px; }
             .hero-sub { font-size:15px; }
@@ -326,10 +332,6 @@
             .mgmt-grid { grid-template-columns:repeat(2,1fr); }
             .workflow-node { width:64px; }
             .workflow-chevron { display:none; }
-            .nav-links { display:none; }
-            .hamburger { display:flex !important; }
-            .btn-login { display:none; }
-            .btn-cta { padding:8px 14px; font-size:13px; }
             /* Dashboard card on mobile */
             .dash-stats { grid-template-columns:repeat(2,1fr); }
             .dash-sidebar { width:100px; }
@@ -396,7 +398,7 @@
         <div class="hero-grid">
             <div>
                 <h1 class="hero-h1">Operations,<br><span style="color:#2563eb">under control.</span></h1>
-                <p class="hero-sub">One workflow platform for requests, approvals, procurement, logistics, expediting and operations — built for supply chain, freight, transport and mining-scale organisations.</p>
+                <p class="hero-sub">One workflow platform for requests, approvals, procurement, logistics, expediting and operations built for supply chain, freight, transport and mining-scale organisations.</p>
                 <div class="hero-btns">
                     <a href="{{ route('login') }}" class="btn-primary-lg">Start Free Trial</a>
                     <a href="#how-it-works" class="btn-outline-lg">See How It Works</a>

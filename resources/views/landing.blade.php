@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlowCheck — Workflow & Operations Platform for Procurement, Logistics & Supply Chain</title>
-    <meta name="description" content="One platform for requests, approvals, procurement, logistics, expediting, and operations — built for supply chain, freight, transport and mining-scale organisations.">
+    <title>FlowCheck — Purchasing & Operations, From Request to Delivery</title>
+    <meta name="description" content="FlowCheck connects purchase requests, approvals, suppliers, orders and goods received for logistics, transport, construction and building companies.">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=space-grotesk:400,500,600,700&display=swap" rel="stylesheet"/>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -363,16 +363,15 @@
             <span class="logo-text">FlowCheck</span>
         </div>
         <div class="nav-links">
-            @foreach([['Product',true],['Solutions',true],['Resources',true],['About Us',false]] as [$l,$a])
-            <a href="#" class="nav-link">
+            @foreach([['Platform','platform'],['Industries','industries'],['How It Works','how-it-works'],['FAQs','faq']] as [$l,$target])
+            <a href="#{{ $target }}" class="nav-link">
                 {{ $l }}
-                @if($a)<svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color:#94a3b8"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>@endif
             </a>
             @endforeach
         </div>
         <div class="nav-actions">
             <a href="{{ route('login') }}" class="btn-login">Log in</a>
-            <a href="{{ route('login') }}" class="btn-cta">Start Free Trial</a>
+            <a href="{{ route('login') }}" class="btn-cta">Log in to FlowCheck</a>
             {{-- Hamburger (mobile only) --}}
             <button class="hamburger" @click="open = !open" aria-label="Toggle menu">
                 <svg x-show="!open" width="22" height="22" fill="none" stroke="#334155" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -383,12 +382,12 @@
 </nav>
 {{-- Mobile dropdown menu --}}
 <div class="mobile-menu" x-show="open" @click.outside="open = false" x-transition style="display:none">
-    @foreach(['Features','How It Works','Impact','About Us'] as $item)
-    <a href="#{{ strtolower(str_replace(' ','-',$item)) }}">{{ $item }}</a>
+    @foreach([['Platform','platform'],['Industries','industries'],['How It Works','how-it-works'],['FAQs','faq']] as [$item,$target])
+    <a href="#{{ $target }}" @click="open = false">{{ $item }}</a>
     @endforeach
     <div class="mobile-menu-divider"></div>
     <a href="{{ route('login') }}" style="padding:13px 12px;font-size:15px;font-weight:600;color:#334155;display:block;text-decoration:none;border-radius:10px">Log in</a>
-    <a href="{{ route('login') }}" class="mobile-menu-cta">Start Free Trial</a>
+    <a href="{{ route('login') }}" class="mobile-menu-cta">Log in to FlowCheck</a>
 </div>
 </div>
 
@@ -397,14 +396,15 @@
     <div class="section-inner">
         <div class="hero-grid">
             <div>
-                <h1 class="hero-h1">Operations,<br><span style="color:#2563eb">under control.</span></h1>
-                <p class="hero-sub">One workflow platform for requests, approvals, procurement, logistics, expediting and operations built for supply chain, freight, transport and mining-scale organisations.</p>
+                <p class="section-label" style="color:#2563eb">Your all-in-one operations platform</p>
+                <h1 class="hero-h1">Every purchase.<br><span style="color:#2563eb">Request to delivery.</span></h1>
+                <p class="hero-sub">Connect requests, approvals, suppliers, purchase orders and goods received in one place. Built around the purchasing needs of logistics, transport, construction and building companies.</p>
                 <div class="hero-btns">
-                    <a href="{{ route('login') }}" class="btn-primary-lg">Start Free Trial</a>
+                    <a href="{{ route('login') }}" class="btn-primary-lg">Log in to FlowCheck</a>
                     <a href="#how-it-works" class="btn-outline-lg">See How It Works</a>
                 </div>
                 <div class="trust-checks">
-                    @foreach(['No credit card required','Easy setup','Cancel anytime'] as $t)
+                    @foreach(['Connected purchasing','Clear approvals','Recorded deliveries'] as $t)
                     <span class="trust-check">
                         <svg class="check-icon" width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                         {{ $t }}
@@ -597,7 +597,7 @@
                 ['2','Approval','The request automatically moves through the required approval levels.','M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'],
                 ['3','Procurement','Procurement sources, quotes and selects a vendor.','M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z'],
                 ['4','Purchase Order','An approved request becomes a purchase order.','M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
-                ['5','Logistics & Delivery','Shipments and transport are tracked through to proof of delivery.','M3 16V8a1 1 0 011-1h9v9H4a1 1 0 01-1-1zm10-6h3.5l3.5 3.5V16h-7v-6zM7 19a2 2 0 100-4 2 2 0 000 4zm10 0a2 2 0 100-4 2 2 0 000 4z'],
+                ['5','Logistics & Delivery','The receiving team records goods delivered against the purchase order.','M3 16V8a1 1 0 011-1h9v9H4a1 1 0 01-1-1zm10-6h3.5l3.5 3.5V16h-7v-6zM7 19a2 2 0 100-4 2 2 0 000 4zm10 0a2 2 0 100-4 2 2 0 000 4z'],
                 ['6','Reporting','Management sees spending, activity, delays and outstanding actions.','M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
             ] as [$num,$title,$desc,$icon])
             <div class="how-step">
@@ -616,7 +616,7 @@
 {{-- ── Stats Band ── --}}
 <div class="stats-band" id="impact">
     <div class="stats-grid">
-        @foreach([['80%','Faster approval cycles','↑'],['100%','Approval visibility','✓'],['25%','Reduction in off-process spending','↓'],['<1 Day','Average setup time','⚡']] as [$s,$l,$i])
+        @foreach([['Request','Capture the need',''],['Approve','Control the spend',''],['Purchase','Connect suppliers',''],['Receive','Record delivery','']] as [$s,$l,$i])
         <div class="stat-item">
             <div class="stat-number">{{ $s }}<span class="stat-icon">{{ $i }}</span></div>
             <div class="stat-label">{{ $l }}</div>
@@ -626,16 +626,16 @@
 </div>
 
 {{-- ── Platform Modules ── --}}
-<section class="section" style="background:#fff">
+<section class="section" style="background:#fff" id="platform">
     <div class="section-inner">
         <h2 class="section-title" style="text-align:center;margin-bottom:48px">One platform, built around<br>how your operation actually runs.</h2>
         <div class="module-grid">
             @foreach([
                 ['Workflows','Every request, approval, task and exception in one auditable trail — no more chasing status across email and chat.',['Requests','Approvals','Tasks','Exceptions'],'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2','#dbeafe','#1d4ed8'],
                 ['Procurement','From purchase request to RFQ, vendor selection, purchase order and invoice — fully tracked end to end.',['Purchase Requests','RFQs','Vendors','Purchase Orders','Invoices'],'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z','#ede9fe','#7c3aed'],
-                ['Logistics','Track shipments, deliveries and transport in real time, with proof of delivery captured at the point of handover.',['Shipments','Deliveries','Transport','Proof of Delivery'],'M3 16V8a1 1 0 011-1h9v9H4a1 1 0 01-1-1zm10-6h3.5l3.5 3.5V16h-7v-6zM7 19a2 2 0 100-4 2 2 0 000 4zm10 0a2 2 0 100-4 2 2 0 000 4z','#dcfce7','#16a34a'],
-                ['Expediting','Surface open and delayed orders automatically, so nothing slips through without a follow-up or escalation.',['Open Orders','Supplier Follow-ups','Delayed Orders','Escalations'],'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z','#fff7ed','#ea580c'],
-                ['Operations','Manage fuel, assets, maintenance and operational spend alongside the workflows that depend on them.',['Fuel','Assets','Maintenance','Operational Expenses'],'M13 10V3L4 14h7v7l9-11h-7z','#fef3c7','#d97706'],
+                ['Logistics','Record goods received against purchase orders. Dedicated shipment tracking and proof-of-delivery workflows are part of the wider platform direction.',['Shipments','Deliveries','Transport','Proof of Delivery'],'M3 16V8a1 1 0 011-1h9v9H4a1 1 0 01-1-1zm10-6h3.5l3.5 3.5V16h-7v-6zM7 19a2 2 0 100-4 2 2 0 000 4zm10 0a2 2 0 100-4 2 2 0 000 4z','#dcfce7','#16a34a'],
+                ['Expediting','Planned: supplier follow-ups, delivery milestones and escalation workflows linked to purchase orders.',['Open Orders','Supplier Follow-ups','Delayed Orders','Escalations'],'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z','#fff7ed','#ea580c'],
+                ['Operations','Planned: connect fuel, assets and maintenance to the purchasing workflows that keep your operation running.',['Fuel','Assets','Maintenance','Operational Expenses'],'M13 10V3L4 14h7v7l9-11h-7z','#fef3c7','#d97706'],
                 ['Reporting','Real-time visibility into spend, supplier and delivery performance, and a complete audit trail for every action.',['Spend','Supplier Performance','Delivery Performance','Workflow Performance','Audit Trail'],'M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z','#fefce8','#ca8a04'],
             ] as [$title,$desc,$tags,$icon,$bg,$color])
             <div class="capability-card">
@@ -701,7 +701,7 @@
             </div>
             <div>
                 <h2 class="solution-title">See a workflow<br>in action.</h2>
-                <p class="section-sub" style="margin-bottom:28px;max-width:440px">Whether it's a purchase request, a shipment or a maintenance job, every request gets the same clear, trackable journey.</p>
+                <p class="section-sub" style="margin-bottom:28px;max-width:440px">Connect the people requesting materials, the managers approving spend, the buyers placing orders and the teams receiving goods.</p>
                 <div class="feature-check-grid">
                     @foreach(['Clear status at every step','No chasing or follow-ups','Complete audit trail','No duplicated data entry','Works across procurement, logistics and operations','Faster from request to completion'] as $feat)
                     <div class="feature-check">
@@ -723,7 +723,7 @@
         <div class="solution-grid" style="align-items:center">
             <div>
                 <h2 class="solution-title" style="font-size:34px">Know what is happening<br>across your operation.</h2>
-                <p class="section-sub" style="margin-bottom:28px;max-width:440px">Management gets real-time visibility into requests, procurement, logistics and operational spend — without asking for another spreadsheet.</p>
+                <p class="section-sub" style="margin-bottom:28px;max-width:440px">Bring purchase requests, supplier records, orders and invoice reports into one place so management can review purchasing activity across departments.</p>
                 <a href="#how-it-works" class="btn-outline-lg">See How It Works</a>
             </div>
             <div>
@@ -751,8 +751,31 @@
     </div>
 </section>
 
+{{-- Industry use cases describe purchasing needs, not dedicated fleet or site modules. --}}
+<section class="section" id="industries" style="background:#f8fafc;scroll-margin-top:80px">
+    <div class="section-inner">
+        <p class="section-label" style="color:#2563eb">Built around your operation</p>
+        <h2 class="section-title">Keep the work moving.<br>Keep every purchase connected.</h2>
+        <p class="section-sub" style="max-width:680px;margin-bottom:32px">From a vehicle part to a site materials order, the journey should be clear: what is needed, who approved it, who supplies it and what arrived.</p>
+        <div class="module-grid">
+            @foreach([
+                ['Logistics companies','Bring warehouse and depot purchasing into a shared process. Connect requests for packaging, handling equipment and operating supplies to approvals, suppliers and goods received.'],
+                ['Transport companies','Give vehicle parts, tyres and workshop purchases a clear approval and ordering trail. Keep the purchasing records behind the work that keeps vehicles moving.'],
+                ['Construction companies','Connect site material and equipment requests with procurement and finance. Use BOQs, supplier quotations and purchase orders to keep project purchasing organised.'],
+                ['Building contractors','Bring office and site teams together around materials, tools and subcontracted services. Record the request, the approved order and goods received without losing the handover.'],
+            ] as [$industry,$description])
+            <article class="capability-card">
+                <h3 class="capability-title">{{ $industry }}</h3>
+                <p class="capability-desc">{{ $description }}</p>
+            </article>
+            @endforeach
+        </div>
+        <p class="module-note">Our direction: one operations platform connecting purchasing, delivery and operational costs. Dedicated shipment tracking, fleet, fuel and maintenance modules are planned extensions.</p>
+    </div>
+</section>
+
 {{-- ── FAQ ── --}}
-<section class="section faq-section">
+<section class="section faq-section" id="faq">
     <div class="section-inner" style="max-width:900px">
         <div class="faq-header">
             <h2 class="section-title">Frequently asked<br>questions</h2>
@@ -761,13 +784,13 @@
         <div class="faq-grid">
             @foreach([
                 ['How does FlowCheck handle approvals?','Requests are automatically routed through your organisation\'s approval chain — by department, budget threshold or role — so the right person is notified at the right time.'],
-                ['Can FlowCheck manage logistics and shipments as well as procurement?','Yes. Shipments, deliveries, transport and proof of delivery are tracked in the same workflow as procurement, so nothing lives in a separate system.'],
-                ['How does expediting work?','Open and delayed orders are surfaced automatically, with supplier follow-ups and escalations built into the workflow so nothing is missed.'],
-                ['Can we track fuel, assets and maintenance?','Yes. Operational costs like fuel, assets and maintenance are logged and reported alongside your procurement and logistics spend.'],
+                ['Can FlowCheck manage logistics and shipments as well as procurement?','The current procurement workflow records goods received against purchase orders. Dedicated shipment, transport and proof-of-delivery tools are planned.'],
+                ['How does expediting work?','Dedicated expediting is planned to connect supplier follow-ups, delivery milestones and escalations to purchase orders.'],
+                ['Can we track fuel, assets and maintenance?','Fuel, asset and maintenance management are part of the wider product direction. They are not yet dedicated modules in the current application.'],
                 ['Can I create different approval workflows for different departments or sites?','Yes. Each department, site or cost centre can have its own multi-level approval chain, configured to match how your organisation actually works.'],
                 ['Can procurement manage supplier quotations and RFQs?','Procurement can issue RFQs, collect and compare supplier quotations, and convert the winning quote into a purchase order — all in one place.'],
                 ['Can finance match invoices against purchase orders and deliveries?','Yes. FlowCheck matches invoices against purchase orders and goods received, flagging any mismatches automatically.'],
-                ['Can management see spend and performance across the whole operation?','Management gets a real-time overview of requests, procurement, logistics, supplier and delivery performance — without waiting on a report.'],
+                ['What can management review?','The application includes purchasing dashboards and reports for departmental spend, request status, invoice aging, vendor performance and audit history. Dedicated logistics and fleet reporting are part of the wider platform direction.'],
                 ['Can FlowCheck work with our existing processes?','FlowCheck is configurable to your existing approval structure, workflows and integrations, so you don\'t need to change how your teams already work to get started.'],
             ] as $faq)
             <div class="faq-row" x-data="{ open: false }">
@@ -775,7 +798,7 @@
                     <span class="faq-q">{{ $faq[0] }}</span>
                     <svg class="faq-icon" :style="open ? 'transform:rotate(45deg)' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                 </button>
-                <div x-show="open" x-collapse>
+                <div x-show="open">
                     <p class="faq-a">{{ $faq[1] }}</p>
                 </div>
             </div>
@@ -790,8 +813,8 @@
         <h2 class="cta-title">Bring procurement, logistics and<br>operations into one workflow.</h2>
         <p class="cta-sub">Stop chasing requests, shipments, approvals and invoices across different systems and tools.</p>
         <div class="cta-btns">
-            <a href="{{ route('login') }}" class="cta-btn-white">Start Free Trial</a>
-            <a href="#" class="cta-btn-ghost">Book a Demo</a>
+            <a href="{{ route('login') }}" class="cta-btn-white">Log in to FlowCheck</a>
+            <a href="#industries" class="cta-btn-ghost">Find Your Industry</a>
         </div>
     </div>
 </section>
@@ -805,7 +828,7 @@
                     <div class="logo-box"><svg width="16" height="16" fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div>
                     <span style="font-size:17px;font-weight:800;color:#f1f5f9;letter-spacing:-.3px">FlowCheck</span>
                 </div>
-                <p class="footer-brand-desc">The workflow and operations platform for procurement, logistics and supply chain teams.</p>
+                <p class="footer-brand-desc">One connected purchasing journey for logistics, transport, construction and building companies. From the first request to goods received and invoice review.</p>
                 <div class="footer-socials">
                     <a href="#" class="footer-social">in</a>
                     <a href="#" class="footer-social">tw</a>
